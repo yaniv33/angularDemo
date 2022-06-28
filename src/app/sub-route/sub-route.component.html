@@ -1,0 +1,16 @@
+<nav class="navbar navbar-dark bg-success text-dark">
+  <div class="container">
+
+<!--    <a #id1 (click)="choice = id1.innerText" [ngClass]="{'chosen':id1.innerText === choice , 'text-white':id1.innerText !== choice}" class ="navbar-brand" routerLink="/pos">          pos </a>    -->
+
+    <a #id1 (click)="choice = id1.innerText" [ngClass]="{'chosen':id1.innerText === choice , 'text-white':id1.innerText !== choice}" class ="navbar-brand" routerLink="./route" >       route    </a>
+    <a #id2 (click)="choice = id2.innerText" [ngClass]="{'chosen':id2.innerText === choice , 'text-white':id2.innerText !== choice}" class ="navbar-brand" routerLink="./route" fragment="calendar"
+       fragment="toster" queryParamsHandling="merge">       route1    </a>
+
+    <a #id3 (click)="choice = id3.innerText" [ngClass]="{'chosen':id3.innerText === choice , 'text-white':id3.innerText !== choice}" class ="navbar-brand" routerLink="./route-pos" >       route-pos    </a>
+  </div>
+</nav>
+
+<div class="router-outlet-class">
+  <router-outlet></router-outlet>
+</div>

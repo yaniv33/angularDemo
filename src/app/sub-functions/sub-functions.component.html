@@ -1,0 +1,29 @@
+<nav class="navbar navbar-dark bg-success text-dark">
+  <div class="container">
+
+    <!--    <a class ="navbar-brand" [ngClass]="id1.innerText === choice ? 'chosen' : 'text-white'" #id1 (click)="choice = id1.innerText" [routerLink]=[getRouteAsRouteObj(id1)]>   pos </a>-->
+<!--    <a class ="navbar-brand" [ngClass]="id1['innerText'] === choice ? 'chosen' : 'text-white'" #id1 (click)="choice = id1.innerText" routerLink="./store-nrgx">    Store </a>-->
+
+
+    <a *ngFor="let route of arrRoutes, let i=index"
+       #id1
+       class="navbar-brand"
+       [ngClass]="{'chosen':id1.innerText === choice , 'text-white': id1.innerText !== choice}"
+       (click)="onClick(id1)"
+    >   {{route.name}}
+    </a>
+<!--
+
+    <a class ="navbar-brand" [ngClass]="id4.innerText === choice ? 'chosen' : 'text-white'" #id4 (click)="choice = id4.innerText" routerLink="./storage">       storage</a>
+    <a class ="navbar-brand" [ngClass]="id2.innerText === choice ? 'chosen' : 'text-white'" #id2 (click)="choice = id2.innerText" routerLink="./detect">        detect</a>
+    <a class ="navbar-brand" [ngClass]="id3.innerText === choice ? 'chosen' : 'text-white'" #id3 (click)="choice = id3.innerText" routerLink="./print">         print</a>
+    <a class ="navbar-brand" [ngClass]="id4.innerText === choice ? 'chosen' : 'text-white'" #id4 (click)="choice = id4.innerText" routerLink="./array-func">    array-func</a>
+
+
+<a #id2 (click)="choice = id2.innerText" [ngClass]="{'chosen':id2.innerText === choice , 'text-white':id2.innerText !== choice}" class ="navbar-brand" routerLink="./table">       table </a>-->
+  </div>
+</nav>
+
+<div class="router-outlet-class">
+  <router-outlet></router-outlet>
+</div>

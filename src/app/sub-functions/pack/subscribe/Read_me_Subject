@@ -1,0 +1,28 @@
+
+SubscribeService 	                                                  // SERVICE
+----------------
+	public nString = new BehaviorSubject<string[]>([]);
+
+
+	getUsers() : Observable<string[]>{
+		return this.nString.asObservable();
+	}
+
+	pushUsers(ss: string[]) : Observable<string[]>{
+		this.nString.next(ss);
+	}
+
+SubscribeComponent	                                                // COMPONENT
+------------------
+
+	users$ : Observable<string[]>;
+
+	constructor(private subscribeService: SubscribeService){
+
+		this.users$ =this.subscribeService.getUsers();
+
+	}
+
+html                                                                // HTML
+---------
+	<span *ngFor="let user of users$  | async; >* {{user}}</span>

@@ -1,0 +1,24 @@
+
+<div class="card-body">
+
+  <u>Child element </u><br>
+  <span>Holds the info recived on call to child :</span>  <ng-content></ng-content><br>
+
+  <div *ngIf="myStringInner!==undefined && myStringInner!==''">
+    <span [ngClass]="{'completed': mprop}" >Variable bind from parent :</span>  {{myStringInner}}
+  </div>
+
+  <button (click)="fireYellEvent($event)">Send by emmiter </button>
+  <button (click)="sendMessage()">Send by service</button>
+  <button (click)="sendHero()">Send Class</button>
+
+<!--  <hr>-->
+<!--  test localstorage<br>-->
+<!--  <button (click)="setLocalStorage()">setLocalStorage</button>-->
+<!--  <button (click)="readLocalStorage()">readfrom</button>-->
+<!--  <br>-->
+<!--  <button (click)="writeCookie()">write cookie </button>-->
+<!--  <button (click)="readCookie()">read from cookie </button>-->
+
+
+</div>

@@ -1,0 +1,29 @@
+<nav>
+  <a class="navbar-brand" routerLink="/network/hero/dashboard">Dashboard</a>
+  <a class="navbar-brand" routerLink="/network/hero">Heroes</a>
+</nav>
+
+<h2>My Heroes</h2>
+
+<div>
+  <label>Hero name:
+    <input #heroName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/network/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    <button class="delete" title="delete hero"
+            (click)="delete(hero)">x</button>
+  </li>
+</ul>
+
+<app-messages></app-messages>
+<!--<app-hero-detail [hero]="hero"></app-hero-detail>-->

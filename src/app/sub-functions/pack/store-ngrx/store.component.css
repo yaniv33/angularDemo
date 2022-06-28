@@ -1,0 +1,9 @@
+div{
+  margin: 5px;
+  direction: ltr;
+  text-align-last: center;
+}
+
+.completed {
+  text-decoration: line-through;
+}

@@ -1,0 +1,67 @@
+
+
+<div> <b>Original list</b> </div>
+<span *ngFor="let rocket of rockets, let i=index">{{viewRocketFull(rocket)}} </span>
+<br>
+<div><b>findIndex of India : </b> {{findIndex('India')}} <b>findIndex of US :    </b> {{findIndex('US')}}</div>
+
+
+<button (click)="unshift()">Add start of list with unshift</button>
+<div><b>map : </b>
+  <span *ngFor="let rocket of map() | async">{{viewRocket(rocket)}}</span>
+</div>
+
+<div><b>forEach : </b>
+<span *ngFor="let rocket of forEach() ">{{rocket}} </span>
+</div>
+
+<div><b>slice : </b> from 2 to -2 , if pass minus will count from end of array</div>
+<span *ngFor="let rocket of slice(2,-2) ">{{viewRocket(rocket)}} </span>
+
+<div><b>splice 1,2,items:</b> changes array , delete from 1 , 2 items and insert the new items instead </div>
+<span *ngFor="let rocket of splice() ">{{viewRocket(rocket)}} </span>
+
+<div><b> splice return : </b> return the removed items </div>
+<span *ngFor="let rocket of splice_removed() ">{{viewRocket(rocket)}} </span>
+
+<div><b> filter: </b> return filtered list according to condition </div>
+<span *ngFor="let rocket of filter() ">{{viewRocket(rocket)}} </span>
+
+<div><b> reduce: </b> max launces :
+<span>{{viewRocket(reduce())}} </span>
+</div>
+
+<div><b> sort: </b> return sorted list according to condition :
+<span *ngFor="let rocket of sort() ">{{viewRocket(rocket)}} </span>
+</div>
+
+<div><b> some: </b> do any stand above 20 :
+  <span>{{some()}} </span>
+</div>
+
+<div><b> every: </b> do all stand above 20 :
+  <span>{{every()}} </span>
+</div>
+
+<div><b> includes: </b> does array includes Israel :
+  <span>{{includes()}} </span>
+</div>
+
+
+
+
+<!--<div *ngFor="let route1 of arrRoute, let j=index">{{route1.path}}</div>-->
+
+<br>
+<!--<div *ngFor="let roc of rocket, let j=index">{{roc.country}}</div>-->
+<!--<div>{{getLength(rocket)}}</div>-->
+<!--<div>{{getLength(arrRouteObj)}}</div>-->
+
+<!--<hello name="{{ name }}"></hello>-->
+<!--<p>-->
+<!--  Start editing to see some magic happen :)-->
+<!--</p>-->
+<!--<div>-->
+<!--  <strong>{{arrRouteObj}}</strong>-->
+
+<!--</div>-->

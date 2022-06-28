@@ -1,0 +1,456 @@
+<div [formGroup]="form" (window:resize)="onResize($event)">
+
+  <div fxLayout="column"
+       fxLayoutGap="5px"
+       fxLayoutGap.xs="0.1vh" >
+
+<!--2. BOX START    -->
+
+    <div fxLayout="row" fxLayoutAlign="center stretch" style="background: #ffffff;
+                        border-radius: 10px;
+                        color: whitesmoke;">
+
+      <div fxLayout="column" fxFlex="90" fxFlex.xs="100" fxLayoutGap.xs="10px"
+           class="fatal-margin-bottom">
+
+        <div fxLayoutAlign="start start"
+             class="fatal-font-35-18 fatal-margin-meshalem fatal-margin-bottom"
+             style="font-family: Open Sans Hebrew;
+                            font-style: normal;
+                            font-weight: bold;
+                            line-height: 105.2%;
+                            text-align: right;
+                            color: #676767;">פרטי המשלם
+        </div>
+<!--2.2 FIRST ROW  -->
+
+        <!--<div fxLayout="row" fxFlex >-->
+        <!--fxFlex = "90"   fxFlex.xs = "100"-->
+
+
+        <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start stretch"
+             fxLayoutGap="2.7vw" fxLayoutGap.xs="0vh" style=" margin-bottom: 20px;">
+
+          <!-- שם פרטי-->
+          <div fxFlex="24" [class]="getClass(form.controls['customerFirstName'])">
+            <mat-form-field xLayout="column" fxLayoutAlign="start stretch" appearance="outline">
+              <mat-label><span>שם פרטי</span></mat-label>
+              <mat-hint class="fatal-error"
+                        *ngIf="form.controls['customerFirstName'].invalid && (!form.controls['customerFirstName'].pristine || tried_submitting)">
+                {{handleError(form.controls['customerFirstName'], "נא להזין שם פרטי")}}
+              </mat-hint>
+              <input matInput formControlName="customerFirstName"
+                     class="fatal-font-input">
+
+            </mat-form-field>
+          </div>
+          <div [hidden]="!isErr2(form.controls['customerFirstName'])" style="padding: 8px;"
+               fxFlex.xs="100"></div>
+
+
+          <!-- שם משפחה-->
+          <div fxFlex="24" [class]="getClass(form.controls['customerLastName'])">
+            <mat-form-field fxLayout="column" fxLayoutAlign="start stretch" appearance="outline">
+
+              <mat-label><span>שם משפחה</span></mat-label>
+              <mat-hint class="fatal-error"
+                        *ngIf="form.controls['customerLastName'].invalid && (!form.controls['customerLastName'].pristine || tried_submitting)">
+                {{handleError(form.controls['customerLastName'], "נא להזין שם משפחה")}}
+              </mat-hint>
+              <input matInput formControlName="customerLastName" class="fatal-font-input">
+
+            </mat-form-field>
+          </div>
+          <div [hidden]="!isErr2(form.controls['customerLastName'])" style="padding: 8px;"
+               fxFlex.xs="100"></div>
+
+          <!--                    כתובת מייל(ליצירת קשר ומשלוח חשבונית)-->
+          <div fxFlex="24" [class]="getClass(form.controls['email'])">
+            <mat-form-field fxLayout="column" fxLayoutAlign="start stretch" appearance="outline">
+
+              <mat-label><span
+              >כתובת מייל(ליצירת קשר ומשלוח חשבונית)</span>
+              </mat-label>
+              <mat-hint class="fatal-error"
+                        *ngIf="form.controls['email'].invalid && ( !form.controls['email'].pristine || tried_submitting)">
+                {{handleError(form.controls['email'], "נא להזין כתובת מייל")}}
+              </mat-hint>
+              <input email matInput formControlName="email" class="fatal-font-input">
+
+            </mat-form-field>
+          </div>
+          <div [hidden]="!isErr2(form.controls['email'])" style="padding: 8px;" fxFlex.xs="100"></div>
+
+          <!--            מספר טלפון-->
+          <div fxFlex="24" [class]="getClass(form.controls['phoneNumber'])">
+            <mat-form-field fxLayout="column" fxLayoutAlign="start stretch" appearance="outline"
+                            fxFlex.xs="100">
+
+              <mat-label><span>מספר טלפון</span></mat-label>
+              <mat-hint class=fatal-error
+                        *ngIf="form.controls['phoneNumber'].invalid && (!form.controls['phoneNumber'].pristine || tried_submitting)">
+                {{handleError(form.controls['phoneNumber'], "נא להזין מספר נייד")}}
+              </mat-hint>
+
+              <input appDigitsOnly inputmode="numeric" type="tel" matInput formControlName="phoneNumber"
+                     class="fatal-font-input">
+
+            </mat-form-field>
+          </div>
+          <div [hidden]="!isErr2(form.controls['phoneNumber'])" style="padding: 8px;" fxFlex.xs="100"></div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!--2. BOX END    -->
+
+  <!--3. BOX START  -->
+  <div fxLayout="column"
+       fxLayoutGap="5px">
+
+    <div fxLayout="row"
+         fxLayoutAlign="center stretch"
+         style="background: #FFFFFF;
+                    border-radius: 10px;
+                    color: whitesmoke;">
+
+      <div fxLayout="column"
+           fxFlex="90" fxFlex.xs="100"
+           style="border-top: 2px solid  #D2D2D2;">
+
+        <div fxLayoutAlign="start start"
+             class="fatal-font-35-18 fatal-margin-top-ashray fatal-margin-bottom"
+             style="font-family: Open Sans Hebrew;
+                            font-style: normal;
+                            font-weight: bold;
+                            margin-top: 3vh;
+                            line-height: 105.2%;
+                            text-align: right;
+                            color: #676767;">פרטי כרטיס האשראי
+        </div>
+
+        <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start stretch"
+             fxLayoutGap="2.7vw" fxLayoutGap.xs="0vh" style=" margin-bottom: 20px;">
+
+          <div fxFlex="24" [class]="getClass(form.controls['username'])">
+            <!--שם מלא של בעל הכרטיס-->
+            <mat-form-field fxLayout="column" fxLayoutAlign="start stretch" appearance="outline"
+                            fxFlex.xs="100">
+              <mat-label><span style="font-family: Open Sans Hebrew">שם מלא של בעל הכרטיס</span>
+              </mat-label>
+              <mat-hint class=fatal-error
+                        *ngIf="form.controls['username'].invalid && (!form.controls['username'].pristine || tried_submitting)">
+                {{handleError(form.controls['username'], "נא להזין שם בעל כרטיס")}}
+              </mat-hint>
+              <input matInput formControlName="username" class="fatal-font-input"
+                     [(ngModel)]="creditCardPaymentHolder.cardHolderName">
+            </mat-form-field>
+          </div>
+          <div [hidden]="!isErr2(form.controls['username'])" style="padding: 8px;" fxFlex.xs="100"></div>
+
+          <!--מספר ת"ז-->
+          <div fxFlex="24" [class]="getClass(form.controls['personalId'])">
+            <mat-form-field fxLayout="column" fxLayoutAlign="start stretch" appearance="outline"
+                            fxFlex.xs="100">
+              <mat-label><span style="font-family: Open Sans Hebrew">מספר ת"ז</span>
+              </mat-label>
+              <mat-hint class=fatal-error
+                        *ngIf="form.controls['personalId'].invalid && (!form.controls['personalId'].pristine || tried_submitting)">
+                {{handleError(form.controls['personalId'], "נא להזין תעודת זהות")}}
+              </mat-hint>
+              <input matInput appDigitsOnly formControlName="personalId" inputmode="numeric" type="tel"
+                     class="fatal-font-input" placeholder="תעודת זהות"
+                     [(ngModel)]="creditCardPaymentHolder.personalId">
+            </mat-form-field>
+
+          </div>
+          <div [hidden]="!isErr2(form.controls['personalId'])" style="padding: 8px;"
+               fxFlex.xs="100"></div>
+
+          <!--מספר כרטיס אשראי-->
+          <div fxFlex="24" [class]="getClass(form.controls['creditCard'])">
+            <mat-form-field fxLayout="column" fxLayoutAlign="start stretch" appearance="outline"
+                            fxFlex.xs="100" class="fatal-align"
+            >
+              <mat-label><span style="font-family: Open Sans Hebrew">מספר כרטיס אשראי</span>
+              </mat-label>
+              <mat-hint class=fatal-error
+                        *ngIf="form.controls['creditCard'].invalid && (!form.controls['creditCard'].pristine || tried_submitting)">
+                {{handleError(form.controls['creditCard'], "נא להזין מספר אשראי")}}
+              </mat-hint>
+              <input dir="ltr" matInput formControlName="creditCard"
+                     style="color: #676767 !important;  direction: ltr;"
+                     type="tel"
+                     class="fatal-font-input"
+                     autocomplete="cc-number-mobile" ccNumber
+                     id="cc-number-mobile"
+                     maxlength="19"
+                     [ngModel]="creditCardPaymentHolder.cardNumber"
+                     (ngModelChange)="setCreditCardNumberEvent($event)">
+            </mat-form-field>
+
+            <div [hidden]="!isErr2(form.controls['creditCard'])" style="padding: 8px;"
+                 fxFlex.xs="100"></div>
+          </div>
+
+          <!-- חודש ושנה-->
+          <div fxFlex="24" fxFlex.xs="60" fxLayout="column" fxLayoutAlign="start">
+                                <span style="font-family: Open Sans Hebrew;
+                                        font-style: normal;
+                                        font-weight: normal;
+                                        font-size: 14px;
+                                        line-height: 20px;
+                                        text-align: right;
+                                        color: #676767;">תוקף כרטיס</span>
+
+            <!-- PC  חודש ושנה-->
+            <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center"
+            >
+              <div fxFlex="48" [class]="getClass(form.controls['expirationMonth'])">
+                <mat-form-field fxLayout="column" appearance="outline"
+                                style="contant:none !important;"
+                >
+                  <mat-hint class=fatal-error
+                            *ngIf="form.controls['expirationMonth'].invalid && (!form.controls['expirationMonth'].pristine || tried_submitting)">
+                    {{handleError(form.controls['expirationMonth'], "נא הזן חודש")}}
+                  </mat-hint>
+
+
+                  <select matNativeControl formControlName="expirationMonth"
+                          class="fatal-font-input "
+                          (change)="creditCardPaymentHolder.expirationMonth = $any($event.target).value">
+                    <option value="" selected disabled>חודש</option>
+                    <option *ngFor="let month of months; let i = index"
+                            [value]="i+1">
+                      {{month}}
+                    </option>
+                  </select>
+                </mat-form-field>
+              </div>
+<!--OLD   (change)="creditCardPaymentHolder.expirationMonth = $event.target.value">-->
+              <div fxFlex="48" [class]="getClass(form.controls['expirationYear'])">
+                <mat-form-field fxLayout="column" appearance="outline">
+
+                  <!--                                <mat-label><span >שנה</span></mat-label>-->
+
+                  <mat-hint class=fatal-error
+                            *ngIf="form.controls['expirationYear'].invalid && (!form.controls['expirationYear'].pristine || tried_submitting)">
+                    {{handleError(form.controls['expirationYear'], "נא הזן שנה")}}
+                  </mat-hint>
+                  <select matNativeControl class="fatal-font-input"
+                          (change)="creditCardPaymentHolder.expirationYear = $any($event.target).value"
+                          formControlName="expirationYear">
+                    <option value="" selected disabled>שנה</option>
+                    <option *ngFor="let year of next10Years; let i = index"
+                            [value]="year">
+                      {{year}}
+                    </option>
+                  </select>
+
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- fix for margin not working -->
+          <div *ngIf="getIsMobile()" fxFlex.xs="7"></div>
+
+
+          <div fxFlex="24" fxFlex.xs="30" fxLayout="column" fxLayoutAlign="start stretch">
+
+                        <span style="font-family: Open Sans Hebrew;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 14px;
+                            line-height: 20px;
+                            text-align: right;
+                            color: #676767;">קוד אימות כרטיס</span>
+            <!-- קוד אימות-->
+            <!-- קוד אימות מספר תשלומים-->
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxFlex="48" fxFlex.xs="100" fxLayout="column" [class]="getClass(form.controls['ccv'])">
+                <mat-form-field appearance="outline">
+
+                  <mat-label><span style="font-family: Open Sans Hebrew">קוד אימות</span>
+                  </mat-label>
+                  <mat-hint class=fatal-error
+                            *ngIf="form.controls['ccv'].invalid && (!form.controls['ccv'].pristine || tried_submitting)">
+                    {{handleError(form.controls['ccv'], "נא הזן קוד")}}
+                  </mat-hint>
+                  <input matInput appDigitsOnly inputmode="numeric" type="tel" formControlName="ccv"
+                         class="fatal-font-input"
+                         [(ngModel)]="creditCardPaymentHolder.cardCCV">
+                </mat-form-field>
+              </div>
+              <div fxFlex="48" fxFlex.xs="100" fxLayout="column" *ngIf="!getIsMobile()"
+                   [class]="getClass(form.controls['numOfPayments'])">
+                <!--מספר תשלומים -->
+                <mat-form-field appearance="outline">
+
+                  <mat-label><span>מספר תשלומים</span></mat-label>
+
+                  <mat-hint class=fatal-error
+                            *ngIf="form.controls['numOfPayments'].invalid && (form.controls['numOfPayments'].touched || tried_submitting)">
+                    {{handleError(form.controls['numOfPayments'], "נא לבחור מספר תשלומים")}}
+                  </mat-hint>
+
+                  <select matNativeControl formControlName="numOfPayments"
+                          class="fatal-font-input"
+                          (change)="creditCardPaymentHolder.numOfPayments = $any($event.target).value">
+                    <option value="" selected disabled></option>
+                    <option *ngFor="let i of payments" [value]=i>{{i}}</option>
+                  </select>
+
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+
+          <div *ngIf="getIsMobile()" fxFlex.xs="100" fxLayout="row" fxLayoutAlign="end center"
+               [class]="getClass(form.controls['numOfPayments'])">
+            <!--מספר תשלומיםMOBILE  -->
+            <mat-form-field appearance="outline">
+
+              <mat-label><span style="font-family: Open Sans Hebrew">מספר תשלומים</span>
+              </mat-label>
+
+              <mat-hint class=fatal-error
+                        *ngIf="form.controls['numOfPayments'].invalid && (form.controls['numOfPayments'].touched || tried_submitting)">
+                {{handleError(form.controls['numOfPayments'], "נא לבחור מספר תשלומים")}}
+              </mat-hint>
+
+              <select matNativeControl formControlName="numOfPayments"
+                      class="fatal-font-input"
+                      (change)="creditCardPaymentHolder.numOfPayments =  $any($event.target).value">
+                <option value="" selected disabled></option>
+                <option *ngFor="let i of payments" [value]=i>{{i}}</option>
+              </select>
+
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div fxLayout="column"
+         fxLayoutGap="5px">
+
+      <div fxLayout="row"
+           fxLayoutAlign="center stretch"
+           style="background: #FFFFFF;
+                    border-radius: 10px;
+                    color: whitesmoke;" class="fatal-margin-bottom">
+
+        <div fxLayout="column" *ngIf="showCouponSection"
+             fxFlex="90" fxFlex.xs="100"
+             style="border-top: 2px solid  #D2D2D2;">
+          <!--יש ברשותי קוד קופון-->
+          <div fxLayoutAlign="start start"
+               class="fatal-margin-top fatal-margin-bottom fatal-font-35-18"
+               style="font-family: Open Sans Hebrew;
+                            font-style: normal;
+                            font-weight: bold;
+                            line-height: 105.2%;
+                            text-align: right;
+                            color: #676767;">יש ברשותי קוד קופון
+          </div>
+          <div fxLayout="column">
+            <div fxLayout="row wrap" fxLayoutAlign="start stretch"
+                 fxLayoutGap="15px" fxLayoutGap.xs="0.1vh"
+                 [class]="getClass(form.controls['voucherCompanyId'])">
+              <!--מועדון    -->
+              <mat-form-field fxLayout="column" appearance="outline" fxFlex="24" fxFlex.xs="100">
+                <mat-label style="color: #676767; font-family: Open Sans Hebrew"> בחרו מועדון
+                </mat-label>
+                <select matNativeControl formControlName="voucherCompanyId" class="fatal-font-input"
+                        (change)="setCouponService($any($event.target))">
+                  <option style="color: #676767 !important; margin-right: 1vw;" value="0" selected
+                  >ללא
+                  </option>
+                  <option style="color: #676767 !important; margin-right: 1vw;"
+                          *ngFor="let company of getSupportedCouponCompanies(); let i = index"
+                          [value]="company.id">
+                    {{company.title}}
+                  </option>
+                </select>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row wrap" fxLayoutAlign="start stretch"
+                 fxLayoutGap="15px" fxLayoutGap.xs="0.1vh" fxLayoutAlign.xs="start end"
+                 [class]="!(form.controls['couponCode']).disabled ? getClass(form.controls['couponCode']):''"
+            >
+              <!--  טעות קופון -->
+              <mat-form-field fxLayout="column" fxFlex="24" fxFlex.xs="100" appearance="outline">
+                <mat-label><span style="color:#676767;font-family: Open Sans Hebrew">קוד קופון</span>
+                </mat-label>
+                <input matInput formControlName="couponCode"
+
+                       class="fatal-font-input">
+                <mat-hint fxShow fxHide.xs class="fatal-error fatal-hint-back" *ngIf="couponError"
+                          style="color: #D12A2A !important;">
+                                    <span mat-line style="font-family: Open Sans Hebrew;margin-bottom: 1vh;">
+                                        <mat-icon appearance="outline" matPrefix>cancel</mat-icon>
+                                        קוד קופון לא תקין
+                                    </span>
+                  ({{couponError}})
+                </mat-hint>
+                <mat-hint fxShow fxHide.xs *ngIf="isDiscount()" class="fatal-error fatal-hint-back"
+                          style="color: #27AE60 !important;">
+                  <mat-icon matPrefix>check</mat-icon>
+                  <span style="font-family: Open Sans Hebrew;"> קוד קופון תקין</span>
+                </mat-hint>
+              </mat-form-field>
+              <!--כפתור-->
+              <div fxLayout="column" fxLayoutAlign="center stretch" fxLayout.xs="row"
+                   fxLayoutAlign.xs="end stretch" fxFlex.xs="100" class="mat-form-field-wrapper">
+                <button fxFlex="80%" fxFlex.xs="100" class="fatal-button-padding"
+                        [disabled]="form.controls['voucherCompanyId'].value  == 0"
+                        [ngClass]="(form.controls['voucherCompanyId'].value  == 0) ?
+                                        'fattal-coupon-button-disabled':
+                                        'fattal-coupon-button-enabled'"
+                        (click)="onCouponsClicked()"
+                        style=" box-shadow: 0px 0px 13px rgba(0, 142, 151, 0.23);
+                                            padding-left: 1em;
+                                                padding-right: 1em;
+                                                border-radius: 5px;
+                                                font-family: Open Sans Hebrew;
+                                                font-style: normal;
+                                                font-weight: bold;
+                                                border: 0px;
+                                                text-align: center;"
+                >
+                  הפעלת קופון
+                </button>
+              </div>
+
+              <div fxHide fxShow.xs>
+                <mat-hint class="fatal-error fatal-hint-back" *ngIf="couponError"
+                          style="color: #D12A2A !important;">
+                                    <span mat-line style="font-family: Open Sans Hebrew;margin-bottom: 1vh;">
+                                        <mat-icon appearance="outline" matPrefix>cancel</mat-icon>
+                                        קוד קופון לא תקין
+                                    </span>
+                  ({{couponError}})
+                </mat-hint>
+                <mat-hint *ngIf="isDiscount()" class="fatal-error fatal-hint-back"
+                          style="color: #27AE60 !important;">
+                  <mat-icon matPrefix>check</mat-icon>
+                  <span style="font-family: Open Sans Hebrew;"> קוד קופון תקין</span>
+                </mat-hint>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,69 @@
+.container{
+  width: fit-content;
+
+}
+.otot-new-error {
+//font-family: Open Sans Hebrew;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  text-align: right;
+//padding-right: 10px;
+  color: #D12A2A !important;
+@media(min-width: 600px) {
+//padding-right: 0px;
+//margin-top: 6px;
+}
+}
+
+
+mat-card {
+
+  width: 600px;
+
+  //@media(max-width: 1250px) { width: 500px;}
+  //@media(max-width: 1000px) { width: 400px;}
+  @media(max-width: 600px)  { width: 90%;}
+
+  margin: 10% auto;
+  border-radius: 8px;
+
+}
+
+
+.login-page {
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 500%;
+  display: block;
+  background-color: #303F9F;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+
+section.form-wrapper {
+  width: 74.1%;
+  height: 15.2rem;
+  float: left;
+  border: 0.1rem solid #d61635;
+  border-radius: 0.9rem;
+  padding: 2.5% 3.4% 0% 0%;
+  background-color: #fff;
+}
+
+.border-wrap{
+  border: 2px solid red;
+  padding: 10px;
+  border-radius: 25px;
+  background: white;
+  width: 800px;
+
+  //@media(max-width: 1250px) { width: 500px;}
+  //@media(max-width: 1000px) { width: 400px;}
+  @media(max-width: 800px)  { width: 90%;}
+}

@@ -1,0 +1,43 @@
+<div fxLayout="column" fxLayoutAlign="center space-between" fxLayoutGap="10px">
+  <mat-divider ></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayout.lt-sm="column" >
+    <h5 *ngIf="userDirectDebitCardsList!.length==0 && showHeaders" fxLayout="column">הכנס פרטי אשראי</h5>
+    <h5 style="font-weight: bold"
+        *ngIf="userDirectDebitCardsList!.length>0 && showHeaders" fxLayout="column">בחר אשראי לתשלום</h5>
+
+    <button style="padding-top: 5px; padding-bottom: 5px"  mat-stroked-button
+            color="primary"
+            fxLayout="column" (click)="onAddCreditCardPressed()">
+      <mat-icon>add</mat-icon>
+      לחץ להוספת אשראי
+    </button>
+  </div>
+  <br>
+<!--  <table style="text-align: start;" fxFlex>-->
+<!--    &lt;!&ndash;<thead *ngIf="showHeaders">-->
+<!--    <th>מס' כרטיס</th>-->
+<!--    <th>חברה</th>-->
+<!--    </thead>&ndash;&gt;-->
+
+<!--    <tr *ngFor="let directDebitCard of userDirectDebitCardsList"-->
+<!--        [ngClass]="selectedCreditCard.last4Digits == directDebitCard.last4Digits?'row-clicked':''"-->
+<!--        (click)="onDirectDebitSelected(directDebitCard)"-->
+<!--    >-->
+<!--      <td flex="1">-->
+<!--        <div align="center">{{'**** ' + directDebitCard.last4Digits}}</div>-->
+<!--      </td>-->
+<!--      <td flex="1">-->
+<!--        <div fxLayoutAlign="space-between center">-->
+<!--          <mat-icon>credit_card</mat-icon>-->
+<!--          <span>{{getCreditCardCompany(directDebitCard)}}</span>-->
+<!--        </div>-->
+<!--      </td>-->
+<!--      <td flex="2" class="td-button">-->
+<!--        <button mat-button color="warn" (click)="onDirectDebitRemoveRequest(directDebitCard)" >-->
+<!--          <mat-icon>delete</mat-icon>הסר-->
+<!--        </button>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </table>-->
+
+</div>

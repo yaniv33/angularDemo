@@ -1,0 +1,125 @@
+<div id="tickets" style="height: fit-content">
+  <!doctype html>
+  <html style="direction: rtl;">
+  <head>
+    <meta charset="utf-8">
+    <title>אישור רכישה</title>
+  </head>
+
+  <body align="center" style="align-content:center; font-family:verdana; font-size:14px;">
+  <div class="invoice-box"
+       style="font-size: 14px;line-height: 20px;font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color: #555;">
+
+    <h1 *ngIf="cart?.note">{{cart?.note}}</h1>
+    <table cellpadding="0" cellspacing="0" style="width: 100%;line-height: inherit;text-align:right;">
+      <tr class="top">
+        <td colspan="5" style="padding: 5px;vertical-align: top;text-align:right;">
+          <table style="width: 100%;line-height: inherit;text-align:right;">
+            <tr>
+              <td class="title"
+                  style="vertical-align: bottom;text-align:right;padding-left: 5px;font-size: 28px;line-height: 45px;color: #333;">
+                <!--<div>-->
+                  <!--{{settings?.siteName}}-->
+                <!--</div>-->
+
+              </td>
+
+              <td style="padding: 5px;vertical-align: top;text-align:left;">
+                מספר עסקה#: {{cart?.invoice_number}}<br>
+                תאריך יצירה: {{cart?.created_on | date: 'short'}}<br>
+              </td>
+
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="information">
+        <td colspan="5" style="padding: 5px;vertical-align: top;text-align:right;">
+          <table style="width: 100%;line-height: inherit;text-align:right;">
+            <tr>
+              <td style="padding: 5px;vertical-align: top;text-align:right;padding-bottom: 40px;">
+                <h1>
+                  אישור רכישה
+                </h1>
+                <!--<h4>-->
+                  <!--{{settings?.siteName}}-->
+                  <!--<br>-->
+                  <!--{{settings?.address}},-->
+                  <!--{{settings?.city}}-->
+                  <!--<br>-->
+                  <!--{{settings?.phone}}-->
+                <!--</h4>-->
+              </td>
+
+              <td style="padding: 5px;vertical-align: top;text-align:left;padding-bottom: 40px;">
+                  <span *ngIf="cart?.customer?.firstName && cart?.customer?.lastName">
+                  לקוח: {{cart?.customer?.firstName + ' ' +cart?.customer?.lastName}}<br>
+                  </span>
+                <span *ngIf="cart?.admin_id">
+                  פקיד: {{cart?.admin_id}}
+                  </span>
+
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+<!--        <app-products-sale-table [cart]="cart"></app-products-sale-table>-->
+      </tr>
+      <tr>
+        <td style="padding: 5px;vertical-align: top;text-align:right;font-size: 12px" colspan="3">
+          <div>
+            תנאים והסכמים
+          </div>
+          <small style="font-size: 10px">
+            <div>החזרת מוצרים מותנית בנהלי העסק</div>
+            <!--<div>המחיר אינו כולל מע"מ</div>-->
+            מדיניות החזרת מוצרים תפורט מול שירות הלקוחות
+          </small>
+        </td>
+
+        <td colspan="2" style="padding: 5px;vertical-align: top;text-align:left;font-size: 12px">
+          <!--עבור {{settings?.siteName}}-->
+        </td>
+      </tr>
+    </table>
+  </div>
+  <p style="page-break-after: always;">&nbsp;</p>
+  <div *ngFor="let ticket of tickets">
+    <table>
+      <tr>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div fxLayout="row">
+<!--            <qrcode fxLayout="column" style="width: 75px;height: 75px;" [usesvg]="true" print [qrdata]="ticket" [size]="256" [level]="'M'"></qrcode>-->
+            <h1 fxLayout="column">&uarr;</h1>
+          </div>
+          <!--<h2 fxLayout="row">{{settings?.siteName + ' - '}}-->
+            <!--כרטיס כניסה-->
+            <!--<br/>-->
+            <!--<h3>-->
+              <!--לכניסה: הצג את הברקוד לסורק בכניסה-->
+            <!--</h3>-->
+          <!--</h2>-->
+        </div>
+      </tr>
+      <tr>
+        <td style="padding: 5px;vertical-align: top;text-align:left;">
+          <p>
+            מספר עסקה:
+            {{cart?.invoice_number}}
+          </p>
+          <p>
+            תאריך:
+            {{cart?.created_on | date: 'short'}}
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p style="page-break-after: always;">&nbsp;</p>9
+  </div>
+  </body>
+  </html>
+</div>

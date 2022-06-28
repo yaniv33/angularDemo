@@ -1,0 +1,56 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<style type="text/css">
+  .topcorner{
+    position:absolute;
+    top:0;
+    right:0;
+  }
+</style>
+
+
+<div style="text-align:center">
+  <img width="50" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+  <div class="topcorner">
+    <button class="btn btn-outline-danger"  (click)="ltr = false">rtl</button>
+    <button class="btn btn-outline-success" (click)="ltr = true">ltr</button>
+  </div>
+</div>
+<!--<h3 class="display-5">Here are some links to help you start: </h3>-->
+
+<!--css requires npm i bootstarp -->
+<nav class="navbar navbar-dark bg-primary text-white" [ngStyle]="getLblStyle()">
+  <div class="container">
+
+    <a *ngFor="let route of arrRoutes, let i=index"
+       #id1
+       class="navbar-brand"
+       [ngClass]="{'chosen':id1.innerText === choice , 'text-white': id1.innerText !== choice}"
+       (click)="onClick(id1)"
+    >   {{route.name}}
+    </a>
+
+    <!--    <a class ="navbar-brand" [ngClass]="{'chosen':id1.innerText === choice , 'text-white':id1.innerText !== choice}" #id1 (click)="choice = id1.innerText" [routerLink]=[getRouteAsRouteObj(id1)]>   pos </a>-->
+    <!--    <a class ="navbar-brand" [ngClass]="{'chosen':id2.innerText === choice , 'text-white':id2.innerText !== choice}" #id2 (click)="choice = id2.innerText" [routerLink]=[getRouteAsRouteObj(id2)]>   network</a>-->
+    <!--    <a class ="navbar-brand" [ngClass]="{'chosen':id3.innerText === choice , 'text-white':id3.innerText !== choice}" #id3 (click)="choice = id3.innerText" [routerLink]=[getRouteAsRouteObj(id3)]>   forms</a>-->
+    <!--    <a class ="navbar-brand" [ngClass]="{'chosen':id4.innerText === choice , 'text-white':id4.innerText !== choice}" #id4 (click)="choice = id4.innerText" [routerLink]=[getRouteAsRouteObj(id4)] >  GUI</a>-->
+    <!--    <a class ="navbar-brand" [ngClass]="{'chosen':id5.innerText === choice , 'text-white':id5.innerText !== choice}" #id5 (click)="choice = id5.innerText" [routerLink]=[getRouteAsRouteObj(id5)]>   Route</a>-->
+    <!--    <a class ="navbar-brand" [ngClass]="{'chosen':id6.innerText === choice , 'text-white':id6.innerText !== choice}" #id6 (click)="choice = id6.innerText" [routerLink]=[getRouteAsRouteObj(id6)]>   Func</a>-->
+    <!--    <a class ="navbar-brand" [ngClass]="{'chosen':id7.innerText === choice , 'text-white':id7.innerText !== choice}" #id7 (click)="choice = id7.innerText" [routerLink]=[getRouteAsRouteObj(id7)]>   more</a>-->
+  </div>
+</nav>
+
+<!--<mat-toolbar color="primary" class="example-toolbar"  >-->
+<!--<button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>-->
+<!--<h1 class="example-app-name">Responsive App</h1>-->
+<!--</mat-toolbar>-->
+<!--ROUTES ARE DEFINED IN app.modules.ts IN appRoutes-->
+
+<div [@routeAnimations]="prepareRoute(outlet)" [ngStyle]="getLblStyle()" >
+  <router-outlet #outlet="outlet" ></router-outlet>
+</div>
+
+<!--<router-outlet></router-outlet>-->
+
+

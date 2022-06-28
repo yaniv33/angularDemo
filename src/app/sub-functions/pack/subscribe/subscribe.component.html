@@ -1,0 +1,14 @@
+
+
+<h6>this is done the correctly , no need for ngInit , ngDestroy , unsubscribe</h6>
+<span *ngFor="let user of users$  | async; trackBy: identify">* &nbsp {{user}}</span>
+<br>
+<h6 style="color: red">WRONG WAY 1 : use subscription</h6>
+<span *ngFor="let user of users1; trackBy:identify">* &nbsp {{user}}</span>
+<br>
+<h6 style="color: red">WRONG WAY 2 : use promise</h6>
+<span *ngFor="let user of users2">* &nbsp {{user}}</span>
+
+<h6>Output of trackBy : </h6>
+ <span *ngFor="let line of output$ | async">* &nbsp {{line}}</span>
+

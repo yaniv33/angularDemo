@@ -1,0 +1,17 @@
+<div fxLayout="column" fxLayoutAlign="center start" >
+  <div fxLayout="column" fxFlex>
+    <div fxLayout="row" fxFlex fxLayoutAlign="space-between stretch" >
+      <span [hidden]="!lastGotMsg">, last got : {{lastGotMsg}} </span>
+      <span>chat {{userName}}</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" >
+
+      <button (click)="connectChat()"   [disabled]="isConnected()">connect</button>
+      <button (click)="disconnectChat()"[disabled]="!isConnected()">disconnect</button>
+      <button (click)="getStatusChat()" >getStatus</button>
+      <button (click)="sendChat(msg.value); msg.value='' "[disabled]="!isConnected()">Send</button>
+      <input #msg (keydown.enter)="sendChat(msg.value); msg.value='' " />
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,28 @@
+<div fxLayout="column" fxLayoutGap="10px">
+
+  <h5>CSS cascade </h5>
+  <div fxLayout="row" >
+    <div fxLayout="column" class="inner" fxFlex="50">class=inner</div>
+    <div fxLayout="row" class="outer" fxFlex="50" fxLayoutAlign="space-evenly">
+      <div fxLayout="column" class="inner"  fxFlex="50" >class=inner</div>
+      class=outer
+    </div>
+  </div>
+
+
+  <div fxLayout="column" >
+    <h5>CSS ngStyle & ngClass </h5>
+    <div fxLayout="column" >
+      <div fxLayout="row" fxLayoutGap="10px">
+        <mat-checkbox (change)="is_ngstyle=$event.checked">apply ngStyle</mat-checkbox>
+        <mat-checkbox (change)="is_ngclass=$event.checked">apply ngClass</mat-checkbox>
+      </div>
+    <span [ngStyle]="getLblStyle()"
+          [ngClass]="{ 'myClass': is_ngclass}" >I am changing styles .. </span><br/>
+
+    <span [ngClass]="{ 'myClass': is_ngclass , 'fontBold' : !is_ngclass}" >I am changing styles .. </span><br/>
+    <span [ngClass]="is_ngclass ? 'fontBold' : 'chosen'" >I am changing styles .. </span><br/>
+
+    </div>
+  </div>
+</div>

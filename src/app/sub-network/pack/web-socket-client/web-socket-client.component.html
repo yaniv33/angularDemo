@@ -1,0 +1,15 @@
+<h6>Web socket- connect to @ServerEndpoint(value = "/endpoint")</h6>
+
+<button (click)="connect()">connect</button>
+<button (click)="getStatus()">getStatus</button>
+<button (click)="send('hello')">Send</button>
+<button (click)="disconnect()">disconnect</button>
+<br>
+<hr>
+<h6>Web socket - connect to @ServerEndpoint(value = "/chat")</h6>
+
+<input #username (keydown.enter)="add(username.value); username.value='' "/>
+<button (click)="add(username.value); username.value='' ">add</button>
+<div *ngFor="let name of nameArr">
+  <app-web-chat [userName]="name"></app-web-chat>
+</div>

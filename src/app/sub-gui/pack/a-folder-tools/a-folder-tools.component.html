@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-danger text-dark">
+  <div class="container">
+
+
+
+    <a *ngFor="let route of arrRoutes, let i=index"
+       #id1
+       class="navbar-brand"
+       [ngClass]="{'chosen':id1.innerText === choice , 'text-white': id1.innerText !== choice}"
+       (click)="onClick(id1)"
+    >   {{route.name}}
+    </a>
+  </div>
+</nav>
+
+<div class="router-outlet-class">
+  <router-outlet></router-outlet>
+</div>

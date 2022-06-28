@@ -1,0 +1,63 @@
+
+<ng-template #blankImage>
+  <p class="warning">No image</p>
+</ng-template>
+
+<ng-content select="course-image" *ngIf=isOptional; else blankImage> </ng-content>
+
+<!--<div id="myDiv"></div>-->
+
+
+<mat-stepper  orientation="horizontal" linear>
+  <ng-template matStepperIcon="edit">
+    <mat-icon>insert_drive_file</mat-icon>
+  </ng-template>
+
+  <mat-step [stepControl]="formGroup1" #myStep >
+    <form [formGroup]="formGroup1">
+        <mat-form-field>
+          <input matInput placeholder="הכנס סיסמה" formControlName="firstCtrl" required>
+        </mat-form-field>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="formGroup2">
+    <form [formGroup]="formGroup2">
+      <mat-form-field>
+        <input matInput placeholder="הכנס סיסמה2" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </form>
+  </mat-step>
+
+</mat-stepper>
+
+<div>step 1 is complete {{!!myStep.completed}}</div>
+
+<mat-stepper  orientation="horizontal">
+  <mat-step label="Step 1">
+    <ng-template matStepLabel><b>my cus</b></ng-template>
+    <button mat-button matStepperNext     type="button">Next</button>
+    Content 1
+  </mat-step>
+  <mat-step label="Step 2">
+    <button mat-button matStepperPrevious type="button">Back</button>
+    Content 2
+  </mat-step>
+</mat-stepper>
+
+<mat-vertical-stepper>
+  <mat-step>
+    Step 1
+    <button mat-button matStepperNext     type="button">Next</button>
+  </mat-step>
+  <mat-step>
+    Step 2
+    <button mat-button matStepperPrevious type="button">Back</button>
+    <button mat-button matStepperNext     type="button">Next</button>
+  </mat-step>
+  <mat-step>
+    Step 3
+    <button mat-button matStepperPrevious type="button">Back</button>
+  </mat-step>
+</mat-vertical-stepper>
+

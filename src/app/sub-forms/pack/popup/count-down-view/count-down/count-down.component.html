@@ -1,0 +1,37 @@
+<div fxHide fxShow.gt-sm
+     style="background: #EAF8FA"  fxLayout="column" fxLayoutAlign="start center">
+  <mat-icon style="background: #EAF8FA" fxHide fxShow.gt-sm fxLayout="row" class="timer-icon">access_time</mat-icon>
+  <div fxLayout="row">
+        <span fxLayout="column" class="timer-div-body">
+            1הכרטיסים שמורים עבורך לעוד&nbsp;
+        </span>
+    <countdown fxLayout="column" #cd class="countdown-bold countdown-style"
+               (event)="setOnTimerFinishedEvent($event)"
+               [config]="getCountdownObject()"></countdown>
+    <span fxLayout="column">&nbsp;דקות</span>
+  </div>
+</div>
+
+<!--VIEW FOR SMALL SCREENS - PART OF THE LAYOUT-->
+<mat-grid-list fxShow fxHide.gt-sm
+               cols="6" rowHeight="45px" >
+
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="1"
+    style="background: #0093A5;
+            border-radius: 0px 10px 10px 0px;">
+    <mat-icon style="color:white" mat-list-icon>access_time</mat-icon>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="5" [rowspan]="1" style="background: #EAF8FA; border-radius: 10px 0px 0px 10px;" >
+        <span fxLayout="column" class="timer-div-body timer-font">
+        הכרטיסים שמורים עבורך לעוד&nbsp;
+        </span>
+    <countdown fxLayout="column" #cd
+               class="countdown-bold countdown-style timer-font"
+               (event)="setOnTimerFinishedEvent($event)"
+               [config]="getCountdownObject()"></countdown>
+    <span fxLayout="column" class="timer-font">&nbsp;דקות</span>
+  </mat-grid-tile>
+</mat-grid-list>

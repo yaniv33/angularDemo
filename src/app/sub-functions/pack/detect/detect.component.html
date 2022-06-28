@@ -1,0 +1,24 @@
+<div style="margin: 20px">
+use input bind<br>
+<app-detect-inner [data]="dataInput"></app-detect-inner>
+<button (click)="incrementInput()">Inc by input</button>
+<hr>
+use input bind with changeDetection  <br>
+<p style="font-size: 12px; color:red">changeDetection is not needed with input bind .. since the gui detects the change   <br>
+however , when using obsevable it is needed since gui can not tell a change occur</p>
+<app-detect-push  [data]="dataPush"></app-detect-push>
+<button (click)="incrementPush()" >Inc by push</button>
+<hr>
+use Observable bind with changeDetection <br>
+<app-detect-behavior [data]="dataBehavior$"></app-detect-behavior>
+<button (click)="incrementBehavior()" >Inc by behavior</button>
+
+<hr>
+use 2 Observable bind , 1 for data and 1 for action<br>
+<button (click)="start()" >Start</button>
+<button (click)="stop()" >Stop</button>
+<button (click)="toggleCD()" >toggleCD</button><br>
+<app-detect-tune [data]="dataTune$"
+                 [notifier]="notifier$">
+</app-detect-tune>
+</div>

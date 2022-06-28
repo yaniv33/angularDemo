@@ -1,0 +1,31 @@
+
+<div class="card-body">
+<u>local storage</u>
+
+<div class="card-body">
+  <p>5MB , data is not sent to server</p>
+  <button (click)="setLocalStorage()">set data</button>
+  <button (click)="readLocalStorage()">read data</button>
+  <button (click)="clearLocalStorage()">clear data</button>
+</div>
+
+<u>cookie</u>
+<div class="card-body">
+  <p>4K , sent to server on every request, 20 cookie per domain</p>
+  <button (click)="writeCookie()">set data</button>
+  <button (click)="readCookie()">read data</button>
+  <button (click)="clearCookie()">clear data</button>
+</div>
+
+  <u>session storage</u>
+  <div class="card-body">
+    <p>5MB , data only availiable per window, only during page session</p>
+    <button (click)="setSessionStorage()">set data</button>
+    <button (click)="readSessionStorage()">read data</button>
+    <button (click)="clearSessionStorage()">clear data</button>
+  </div>
+
+<div class="card" [hidden]="!gotFromStorage">
+  {{gotFromStorage}}
+</div>
+</div>

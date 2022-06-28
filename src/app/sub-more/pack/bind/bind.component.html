@@ -1,0 +1,36 @@
+<div class="card-body">
+<u>bind example</u><br>
+
+Two way bind : <input [(ngModel)]="myString"/><br>
+One way bind : <input #input [value] = "myString">
+               <input value = "{{myString}}">
+               <input [ngModel]="myString"/>
+
+<br>
+the value : {{myString}}
+<br>
+the input : {{input.value}}
+<br>
+<hr>
+<!--<input currencyMask [(ngModel)]="value" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>-->
+
+<u>bind with child element </u><br>
+currnent element<br>
+<button (click)="alertMe(myString)">Local call</button>
+<button (click)="prop1=!prop1">change child variable</button>
+<button (click)="passDirect()">Send direct</button>
+<button (click)="passDataByService()">Send by service</button>
+
+<app-button-inner [myStringInner]="myString"
+                  [mclass]='mclass'
+                  [setProp]='prop1'
+                  (OnYell)="yell($event)"
+
+>Info to child display on ng-contant</app-button-inner>
+
+</div>
+
+
+<!--<input [(ngModel)]="ninja.name" )] >-->
+
+

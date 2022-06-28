@@ -1,0 +1,25 @@
+<nav class="navbar navbar-dark bg-danger text-dark">
+  <div class="container">
+
+
+
+    <a *ngFor="let route of arrRoutes, let i=index"
+       #id1
+       class="navbar-brand"
+       [ngClass]="{'chosen':id1.innerText === choice , 'text-white': id1.innerText !== choice}"
+       (click)="onClick(id1)"
+    >   {{route.name}}
+    </a>
+   <!--
+    <a #id1 (click)="choice = id1.innerText" [ngClass]="{'chosen':id1.innerText === choice , 'text-white':id1.innerText !== choice}" class ="navbar-brand" routerLink="./credit">        manual-filling </a>
+    <a #id2 (click)="choice = id2.innerText" [ngClass]="{'chosen':id2.innerText === choice , 'text-white':id2.innerText !== choice}" class ="navbar-brand" routerLink="./credit-pre">    Card-list </a>
+    <a #id3 (click)="choice = id3.innerText" [ngClass]="{'chosen':id3.innerText === choice , 'text-white':id3.innerText !== choice}" class ="navbar-brand" routerLink="./dhl">           DHL </a>
+    <a #id4 (click)="choice = id4.innerText" [ngClass]="{'chosen':id4.innerText === choice , 'text-white':id4.innerText !== choice}" class ="navbar-brand" routerLink="./test">           Test </a>
+    <a #id5 (click)="choice = id5.innerText" [ngClass]="{'chosen':id5.innerText === choice , 'text-white':id5.innerText !== choice}" class ="navbar-brand" routerLink="./test2">           Test2 </a>
+-->
+  </div>
+</nav>
+
+<div class="router-outlet-class">
+  <router-outlet></router-outlet>
+</div>

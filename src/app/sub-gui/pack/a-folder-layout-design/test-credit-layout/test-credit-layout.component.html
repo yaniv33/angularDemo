@@ -1,0 +1,332 @@
+<div fxLayout="column"  [formGroup]="form" fxLayoutAlign="center">
+
+      <div class="login-page" fxLayout="column" fxLayoutAlign="center">
+
+        <div class="border-wrap">
+          <div  fxLayout.xs="column" fxLayoutAlign="center">
+
+<!--  שם מלא של בעל הכרטיס-->
+            <mat-form-field fxLayout="column" fxLayoutAlign="start stretch" appearance="outline"
+                            fxFlex="40" fxFlex.xs="100">
+              <mat-label>שם מלא של בעל הכרטיס</mat-label>
+              <mat-hint class="otot-new-error"
+                        *ngIf="form.controls['username'].invalid && (!form.controls['username'].pristine || tried_submitting)">
+                {{handleError(form.controls['username'], "נא להזין שם בעל כרטיס")}}
+              </mat-hint>
+              <input matInput
+                     formControlName="username"
+                     [(ngModel)]="creditCardPaymentHolder.cardHolderName">
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+
+<!--  תעודת זהות-->
+            <mat-form-field  fxLayout="column" fxLayoutAlign="start stretch" appearance="outline"
+                             fxFlex.xs="100">
+              <mat-label>תעודת זהות
+              </mat-label>
+              <mat-hint class="otot-new-error"
+                        *ngIf="form.controls['personalId'].invalid && (!form.controls['personalId'].pristine || tried_submitting)">
+                {{handleError(form.controls['personalId'], "נא להזין תעודת זהות")}}
+              </mat-hint>
+              <input matInput
+                     appDigitsOnly
+                     inputmode="numeric" type="tel"
+                     placeholder="תעודת זהות"
+                     formControlName="personalId"
+                     [(ngModel)]="creditCardPaymentHolder.personalId">
+              <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+            </mat-form-field>
+
+          </div>
+
+
+          <div  fxLayout.xs="column" fxLayoutAlign="center">
+
+<!--  מספר כרטיס-->
+            <mat-form-field  fxLayout="column" fxLayoutAlign="start stretch"  appearance="outline">
+              <mat-label>מספר כרטיס</mat-label>
+              <mat-hint class="otot-new-error"
+                        *ngIf="form.controls['creditCard'].invalid && (!form.controls['creditCard'].pristine || tried_submitting)">
+                {{handleError(form.controls['creditCard'], "נא להזין מספר אשראי")}}
+              </mat-hint>
+              <input  matInput formControlName="creditCard"
+                      appDigitsOnly
+                      type="tel"
+                      placeholder="מס' כרטיס"
+                      maxlength="19"
+                      autocomplete="cc-number-mobile" ccNumber
+                      id="cc-number-mobile"
+                      appCreditCardDirective
+                      [ngModel]="creditCardPaymentHolder.cardNumber"
+                      (ngModelChange)="setCreditCardNumberEvent($event)">
+              <mat-icon matSuffix>credit_card</mat-icon>
+            </mat-form-field>
+
+
+<!--  CVV-->
+            <mat-form-field style="width:30%" appearance="outline" >
+              <mat-label>CVV</mat-label>
+              <mat-hint class=otot-new-error
+                        *ngIf="form.controls['ccv'].invalid && (!form.controls['ccv'].pristine || tried_submitting)">
+                {{handleError(form.controls['ccv'], "נא הזן קוד")}}
+              </mat-hint>
+              <input matInput appDigitsOnly
+                     inputmode="numeric" type="tel" formControlName="ccv"
+                     [(ngModel)]="creditCardPaymentHolder.cardCCV">
+            </mat-form-field>
+
+          </div>
+
+          <div  fxLayout.xs="column" fxLayoutAlign="center">
+
+<!--  שנה-->
+            <mat-form-field style="width:30%" appearance="outline">
+              <mat-label>שנה </mat-label>
+              <mat-hint class=otot-new-error
+                        *ngIf="form.controls['expirationYear'].invalid && (!form.controls['expirationYear'].pristine || tried_submitting)">
+                {{handleError(form.controls['expirationYear'], "נא הזן שנה")}}
+              </mat-hint>
+              <select matNativeControl
+                      [ngModel]="creditCardPaymentHolder.expirationYear"
+                      (ngModelChange)="creditCardPaymentHolder.expirationYear =$event"
+                      formControlName="expirationYear">
+                <option value="" selected disabled>שנה</option>
+                <option *ngFor="let year of next10Years; let i = index"
+                        [value]="year">
+                  {{year}}
+                </option>
+              </select>
+            </mat-form-field>
+
+<!--  חודש-->
+            <mat-form-field style="width:30%" appearance="outline">
+              <mat-label>חודש </mat-label>
+              <mat-hint class=otot-new-error
+                        *ngIf="form.controls['expirationMonth'].invalid && (!form.controls['expirationMonth'].pristine || tried_submitting)">
+                {{handleError(form.controls['expirationMonth'], "נא הזן חודש")}}
+              </mat-hint>
+              <select matNativeControl
+                      [ngModel]="creditCardPaymentHolder.expirationMonth"
+                      (ngModelChange)="creditCardPaymentHolder.expirationMonth =$event"
+                      formControlName="expirationMonth">
+                <option value="" selected disabled>חודש</option>
+                <option *ngFor="let month of months; let i = index"
+                        [value]="i+1">
+                  {{month + '-' + ((i + 1) | number:'2.0')}}
+                </option>
+              </select>
+
+            </mat-form-field>
+
+          </div>
+        </div>
+        </div>
+<div dir="rtl" class="container" >
+
+  <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="20px">
+    <mat-icon>credit_card</mat-icon>
+    <h4 class="tc-green-600 text-bold">פרטי תשלום</h4>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="start stretch">
+
+    <mat-form-field fxLayout="column" fxLayoutAlign="start stretch" appearance="fill"
+                    fxFlex.xs="100">
+      <mat-label>שם מלא של בעל הכרטיס</mat-label>
+      <mat-hint class="otot-new-error"
+                *ngIf="form.controls['username'].invalid && (!form.controls['username'].pristine || tried_submitting)">
+        {{handleError(form.controls['username'], "נא להזין שם בעל כרטיס")}}
+      </mat-hint>
+      <input matInput
+             formControlName="username"
+             [(ngModel)]="creditCardPaymentHolder.cardHolderName">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field  fxLayout="column" fxLayoutAlign="start stretch" appearance="fill"
+                     fxFlex.xs="100">
+      <mat-label>תעודת זהות
+      </mat-label>
+      <mat-hint class="otot-new-error"
+                *ngIf="form.controls['personalId'].invalid && (!form.controls['personalId'].pristine || tried_submitting)">
+        {{handleError(form.controls['personalId'], "נא להזין תעודת זהות")}}
+      </mat-hint>
+      <input matInput
+             appDigitsOnly
+             inputmode="numeric" type="tel"
+             placeholder="תעודת זהות"
+             formControlName="personalId"
+             [(ngModel)]="creditCardPaymentHolder.personalId">
+      <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field  fxLayout="column" fxLayoutAlign="start stretch"  appearance="fill">
+      <mat-label>מספר כרטיס</mat-label>
+      <mat-hint class="otot-new-error"
+                *ngIf="form.controls['creditCard'].invalid && (!form.controls['creditCard'].pristine || tried_submitting)">
+        {{handleError(form.controls['creditCard'], "נא להזין מספר אשראי")}}
+      </mat-hint>
+      <input  matInput formControlName="creditCard"
+              appDigitsOnly
+              type="tel"
+              placeholder="מס' כרטיס"
+              maxlength="19"
+              autocomplete="cc-number-mobile" ccNumber
+              id="cc-number-mobile"
+              appCreditCardDirective
+              [ngModel]="creditCardPaymentHolder.cardNumber"
+              (ngModelChange)="setCreditCardNumberEvent($event)">
+      <mat-icon matSuffix>credit_card</mat-icon>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <label style="font-size: 19px"><strong>תוקף כרטיס</strong> </label>
+      <label style="font-size: 16px" data-toggle="tooltip" title=""
+             data-original-title="3 digits code on back side of the card"><strong class="hidden-xs">CCV <i
+        class="fa fa-question-circle"></i></strong> </label>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center"  [formGroup]="form" class="form-inline">
+      <mat-form-field style="width:30%" appearance="fill">
+        <mat-label>חודש </mat-label>
+        <mat-hint class=otot-new-error
+                  *ngIf="form.controls['expirationMonth'].invalid && (!form.controls['expirationMonth'].pristine || tried_submitting)">
+          {{handleError(form.controls['expirationMonth'], "נא הזן חודש")}}
+        </mat-hint>
+        <select matNativeControl
+                [ngModel]="creditCardPaymentHolder.expirationMonth"
+                (ngModelChange)="creditCardPaymentHolder.expirationMonth =$event"
+                formControlName="expirationMonth">
+          <option value="" selected disabled>חודש</option>
+          <option *ngFor="let month of months; let i = index"
+                  [value]="i+1">
+            {{month + '-' + ((i + 1) | number:'2.0')}}
+          </option>
+        </select>
+
+      </mat-form-field>
+      <mat-form-field style="width:30%" appearance="fill">
+        <mat-label>שנה </mat-label>
+        <mat-hint class=otot-new-error
+                  *ngIf="form.controls['expirationYear'].invalid && (!form.controls['expirationYear'].pristine || tried_submitting)">
+          {{handleError(form.controls['expirationYear'], "נא הזן שנה")}}
+        </mat-hint>
+        <select matNativeControl
+                [ngModel]="creditCardPaymentHolder.expirationYear"
+                (ngModelChange)="creditCardPaymentHolder.expirationYear =$event"
+                formControlName="expirationYear">
+          <option value="" selected disabled>שנה</option>
+          <option *ngFor="let year of next10Years; let i = index"
+                  [value]="year">
+            {{year}}
+          </option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field style="width:30%" appearance="fill" >
+        <mat-label>CVV</mat-label>
+        <mat-hint class=otot-new-error
+                  *ngIf="form.controls['ccv'].invalid && (!form.controls['ccv'].pristine || tried_submitting)">
+          {{handleError(form.controls['ccv'], "נא הזן קוד")}}
+        </mat-hint>
+        <input matInput appDigitsOnly
+               inputmode="numeric" type="tel" formControlName="ccv"
+               [(ngModel)]="creditCardPaymentHolder.cardCCV">
+      </mat-form-field>
+
+    </div>
+  </div>
+
+
+  <div style="margin-top: 40px" [hidden]='!showButtons' fxLayout="row" fxLayoutAlign="space-evenly center">
+    <button mat-raised-button color="warn" (click)="onCancelPressed()"> ביטול</button>
+    <button mat-raised-button color="primary" (click)="onAddCreditCardPressed()">אישור</button>
+  </div>
+</div>
+
+</div>
+
+
+<!--
+<div fxLayout="column" fxLayoutGap="5px">
+
+  <div   fxLayout="column"  fxLayoutAlign="space-evenly stretch"  style="background: purple; height: 100px">
+    <div fxLayout="row"     fxLayoutAlign="center stretch"        style="background: lightgrey;">
+      <div fxLayout="column" fxFlex="80" fxLayoutGap="20px"     style="background: red;">
+
+        <div fxLayout="row"  fxLayoutAlign="space-around center"  style="background: pink;">
+          <mat-form-field fxLayout="column" fxLayoutAlign="start stretch" appearance="outline"
+                          fxFlex="40" fxFlex.xs="100">
+            <mat-label>שם מלא של בעל הכרטיס</mat-label>
+            <mat-hint class="otot-new-error"
+                      *ngIf="form.controls['username'].invalid && (!form.controls['username'].pristine || tried_submitting)">
+              {{handleError(form.controls['username'], "נא להזין שם בעל כרטיס")}}
+            </mat-hint>
+            <input matInput
+                   formControlName="username"
+                   [(ngModel)]="creditCardPaymentHolder.cardHolderName">
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field  fxLayout="column" fxLayoutAlign="start stretch" appearance="outline"
+                           fxFlex="40" fxFlex.xs="100">
+            <mat-label>תעודת זהות
+            </mat-label>
+            <mat-hint class="otot-new-error"
+                      *ngIf="form.controls['personalId'].invalid && (!form.controls['personalId'].pristine || tried_submitting)">
+              {{handleError(form.controls['personalId'], "נא להזין תעודת זהות")}}
+            </mat-hint>
+            <input matInput
+                   appDigitsOnly
+                   inputmode="numeric" type="tel"
+                   placeholder="תעודת זהות"
+                   formControlName="personalId"
+                   [(ngModel)]="creditCardPaymentHolder.personalId">
+            <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+          </mat-form-field>
+        </div>
+
+
+        <div fxLayout="row"  fxLayoutAlign="space-around center"  style="background: pink;">
+          <span fxFlex="40" style="background: green;"> פרטי המשתתפים</span>
+          <span fxFlex="40" style="background: green;"> פרטי המשתתפים</span>
+        </div>
+
+        <div fxLayout="row"  fxLayoutAlign="space-around center"  style="background: pink;">
+          <span fxFlex="40" style="background: green;"> פרטי המשתתפים</span>
+          <span fxFlex="40" style="background: green;"> פרטי המשתתפים</span>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+      <span fxFlex="40" style="background: green;"> פרטי המשתתפים</span> -->
+
+
+
+
+
+<!--                    <select class="form-control" formControlName="expirationMonth" style="width:45%"-->
+<!--                            [ngModel]="creditCardPaymentHolder.expirationMonth"-->
+<!--                            (ngModelChange)="creditCardPaymentHolder.expirationMonth =$event"-->
+<!--                            style="width:45%"-->
+<!--                            [compareWith]="compareFn">-->
+<!--                        <option value="" disabled>חודש</option>-->
+<!--                        <option *ngFor="let month of months; let i = index" [value]="(i+1)">-->
+<!--                            {{month + '-' + ((i + 1) | number:'2.0')}}-->
+<!--                        </option>-->
+<!--                    </select>-->
+<!--                    <span style="width:10%; text-align: center"> / </span>-->
+<!--                    <select class="form-control" style="width:45%"-->
+<!--                            [ngModel]="creditCardPaymentHolder.expirationYear"-->
+<!--                            (ngModelChange)="creditCardPaymentHolder.expirationYear =$event"-->
+<!--                            formControlName="expirationYear">-->
+<!--                        <option value="" disabled selected>שנה</option>-->
+<!--                        <option *ngFor="let year of next10Years; let i = index" [value]="year">-->
+<!--                            {{year}}-->
+<!--                        </option>-->
+<!--                    </select>-->
+
+

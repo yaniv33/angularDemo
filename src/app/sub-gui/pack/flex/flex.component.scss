@@ -1,0 +1,18 @@
+h6{
+  align-self: center;
+}
+
+.outer{
+  background: red;
+}
+
+.inner{
+  background: grey;
+}
+
+.outer .inner{
+  background: yellow;
+  padding: 5px;
+}
+
+

@@ -1,0 +1,20 @@
+.timer-div-body{
+  background-color: #EAF8FA;
+  color:gray;
+  font-family: Open Sans Hebrew;
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
+}
+.timer-font{
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
+}
+
+.timer-icon{
+  color:#0093A5;
+}
+.countdown-style{
+  color:#0093A5;
+}

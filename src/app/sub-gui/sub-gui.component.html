@@ -1,0 +1,27 @@
+<nav class="navbar navbar-dark bg-success text-dark">
+  <div class="container">
+
+    <a *ngFor="let route of arrRoutes, let i=index"
+       #id1
+       class="navbar-brand"
+       [ngClass]="{'chosen':id1.innerText === choice , 'text-white': id1.innerText !== choice}"
+       (click)="onClick(id1 , route)"
+    >   {{route.name}}
+          </a>
+        <!--
+          <a #id2 (click)="choice = id2.innerText" [ngClass]="{'chosen':id2.innerText === choice , 'text-white':id2.innerText !== choice}" class ="navbar-brand" routerLink="./table">       table </a>
+          <a #id3 (click)="choice = id3.innerText" [ngClass]="{'chosen':id3.innerText === choice , 'text-white':id3.innerText !== choice}" class ="navbar-brand" routerLink="./graph" >      graph    </a>
+          <a #id4 (click)="choice = id4.innerText" [ngClass]="{'chosen':id4.innerText === choice , 'text-white':id4.innerText !== choice}" class ="navbar-brand" routerLink="./google-chart" >   google-chart    </a>
+          <a #id5 (click)="choice = id5.innerText" [ngClass]="{'chosen':id5.innerText === choice , 'text-white':id5.innerText !== choice}" class ="navbar-brand" routerLink="./qr" >         QR    </a>
+          <a #id6 (click)="choice = id6.innerText" [ngClass]="{'chosen':id6.innerText === choice , 'text-white':id6.innerText !== choice}" class ="navbar-brand" routerLink="./flex" >       flex    </a>
+          <a #id7 (click)="choice = id7.innerText" [ngClass]="{'chosen':id7.innerText === choice , 'text-white':id7.innerText !== choice}" class ="navbar-brand" routerLink="./parses" >     parses    </a>
+          <a #id8 (click)="choice = id8.innerText" [ngClass]="{'chosen':id8.innerText === choice , 'text-white':id8.innerText !== choice}" class ="navbar-brand" routerLink="./css" >        CSS    </a>
+          <a #id9 (click)="choice = id9.innerText" [ngClass]="{'chosen':id9.innerText === choice , 'text-white':id9.innerText !== choice}" class ="navbar-brand" routerLink="./designs" >     Designs   </a>
+          <a class="navbar-brand text-white"  routerLink="./piechart" >  piechart </a>-->
+<!--    <a class="navbar-brand text-white"  routerLink="./google-chart-tag" >     G chartTag    </a>-->
+  </div>
+</nav>
+
+<div [ngClass]="{'router-outlet-class': !currentRouteObj?.loadChildren }"  [@routeAnimations]="prepareRoute(outlet)" >
+  <router-outlet  #outlet="outlet" ></router-outlet>
+</div>

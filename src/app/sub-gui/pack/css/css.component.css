@@ -1,0 +1,27 @@
+
+.outer{
+  background: red;
+}
+
+.inner{
+  background: grey;
+}
+
+.outer .inner{
+  background: yellow;
+  padding: 5px;
+}
+
+
+.myClass{
+  background: red !important;
+  color: blue !important;
+}
+
+.fontBold{
+ font-weight: bold;
+}
+
+div{
+  margin: 10px;
+}

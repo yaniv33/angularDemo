@@ -1,0 +1,165 @@
+
+<!--<head>-->
+<!--  <title>DHL</title>-->
+<!--  -->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+<!--  <script src="/yaadpay/forms/new/script/font-scaling.js"></script>-->
+<!--&lt;!&ndash;  <link rel="stylesheet" href="/yaadpay/forms/new/css/normalize.css">&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="stylesheet" href="/yaadpay/forms/new/css/fonts.css">&ndash;&gt;-->
+<!--&lt;!&ndash;  <link id="desk" rel="stylesheet" href="/yaadpay/forms/new/css/desktop.css" media="screen and (min-width: 1001px)">&ndash;&gt;-->
+<!--&lt;!&ndash;  <link id="mob" rel="stylesheet" href="/yaadpay/forms/new/css/mobile.css" media="screen and (max-width: 1000px)">&ndash;&gt;-->
+<!--</head>-->
+
+
+<body id="index">
+<div id="top_wrapper">
+
+
+<!--  <header>-->
+<!--    <h1>-->
+<!--      <a href="http://www.dhl.co.il/he.html" class="logo"><img src="/yaadpay/forms/new/img/logo.png" alt="dhl logo"></a>-->
+<!--    </h1>-->
+<!--  </header>-->
+
+  <main>
+
+    <section class="detailes">
+
+      <!--             <h3 class="cost-name">OTOT ELECTRONICS LTD</h3>-->
+
+      <div class="delivery-detiles">OTOT ELECTRONICS LTD<br> משלוח שמספרו <span class="delivery-num">6028079120</span>  ממוען אליך מחברת:
+        <br><span class="sender-com-name0">GUNNEBO SECURITY (CHINA) CO.,LTD</span>,<br> נחת בישראל, נמצא בתהליך שחרור ממכס ונושא עלויות בסך
+        <span class="tax-cost"><b>4353.30</b></span> ש"ח. לטובת מסירת המשלוח יש להסדיר את התשלום ולמלא את פרטי כרטיס האשראי בטופס שלהלן
+      </div>
+      <!--
+              <a href="<a href="http://dhl.yaad.net/FCS/6028079120.pdf" target=_blank>לצפייה בניירת הנלווית ופירוט התשלום לחץ כאן</a>" class="tfia">לצפייה בפירוט התשלום</a>
+              <a href="" class="shtar">שטר מטען</a>
+              <a href="" class="heshbon">חשבון ספק</a>-->
+      <a href="http://dhl.yaad.net/FCS/6028079120.pdf" target=_blank>לצפייה בניירת הנלווית ופירוט התשלום לחץ כאן</a>
+    </section>
+
+
+
+
+
+    <section class="form-wrapper">
+      <form id="lead_form" name="leadForm" method="POST" action="https://pay.dhl.co.il/cgi-bin/yaadpay/yaadpaydhl.pl" aria-hidden="false" autocomplete="off" novalidate>
+        <h3>פרטי כרטיס אשראי</h3>
+
+        <!--/	<h3 align=center><strong><b><font color=#FF0000 size=5>YP-error-msg-SC</font></b></strong></h3>-->
+
+        <label for="form_id_num" class="input_title id-num">
+          <span id="form_id_num_error" class="error-msg">מספר החפ/ע"מ לפיו תופק החשבונית</span>
+          <input value="511385742" onfocus="showalert()" type="tel" id="form_id_num" class="form-input ltr" name="UserId" maxlength="9" data-require="1" data-vtype="israeli-id" data-title="" title="ח&quot;פ/ע&quot;מ שלפיו תופק החשבונית:" aria-label="ח&quot;פ/ע&quot;מ שלפיו תופק החשבונית:" placeholder="ח&quot;פ/ע&quot;מ שלפיו תופק החשבונית:" onkeypress="return onlyNumbers(event);" data-error-messages='{"required":"יש להקליד חפ/עמ של בעל הכרטיס" , "invalid":"המספר אינו תקין"}'>
+        </label>
+
+        <label for="form_cc_num" class="input_title wrap-cc-num">
+          <span id="form_cc_num_error" class="error-msg"></span>
+          <input type="tel" id="form_cc_num" class="form-input cc-num ltr" name="CC" maxlength="20" data-require="1" data-vtype="numeric" data-title="מספר כרטיס אשראי" title="מספר כרטיס אשראי" aria-label="מספר כרטיס אשראי" placeholder="מספר כרטיס אשראי:" onkeypress="return onlyNumbers(event);" data-error-messages='{"required":"יש להזין מספר כרטיס אשראי", "invalid":"מספר כרטיס האשראי אינו תקין"}'>
+        </label>
+
+
+
+        <label for="form_cc_month" id="label_cc_month" class="input_title wrap-cc-month select">
+          <span id="form_cc_month_error" class="error-msg"></span>
+          <select name="Tmonth" id="form_cc_month" class="form-input" data-require="1" data-vtype="numeric" data-title="בתוקף עד חודש" title="בתוקף עד חודש" aria-label="בתוקף עד חודש" placeholder="חודש" data-error-messages='{"required":"יש לבחור חודש תוקף אשראי", "invalid":"יש לבחור חודש תוקף אשראי"}'>
+            <option value="noValue" class="first-option">חודש</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <div class="tiangle select"></div>
+          <div class="betokef select">בתוקף עד:</div>
+        </label>
+
+
+        <label for="form_cc_year" id="label_cc_year" class="input_title wrap-cc-year select">
+          <span id="form_cc_year_error" class="error-msg"></span>
+          <select name="Tyear" id="form_cc_year" class="form-input" data-require="1" data-vtype="numeric" data-title="בתוקף עד שנה" title="בתוקף עד שנה " aria-label="בתוקף עד שנה" placeholder="שנה" data-error-messages='{"required":"יש לבחור שנת תוקף אשראי", "invalid":"יש לבחור שנת תוקף אשראי"}'>
+            <option value="שנה" class="first-option">שנה</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+            <option value="2031">2031</option>
+
+            <!--generated from script.js-->
+          </select>
+          <div class="tiangle select"></div>
+          <div class="betokef select">בתוקף עד:</div>
+        </label>
+
+        <label for="form_cc_cvv" class="input_title wrap-cc-cvv">
+          <span id="form_cc_cvv_error" class="error-msg"></span>
+          <input type="tel" id="form_cc_cvv" class="form-input cc-cvv ltr" name="cvv" maxlength="5" data-require="1" data-vtype="numeric" data-title="מספר cvv" title="מספר cvv" aria-label="מספר cvv" placeholder="CVV:" onkeypress="return onlyNumbers(event);" data-error-messages='{"required":"יש להזין ספרות האבטחה שבגב הכרטיס" , "invalid":"ניתן להזין מספרים בלבד"}'>
+        </label>
+
+
+
+        <label for="form_email" id="label_email" class="input_title email">
+          <span id="form_email_error" class="error-msg"></span>
+          <input type="email" id="form_email" class="form-input ltr" name="email" maxlength="60" data-require="1" data-vtype="email" data-title="מייל" title="מייל" aria-label="כתובת מייל" placeholder="דואר אלקטרוני לקבלת חשבונית מס:" data-error-messages='{"required":"דואר אלקטרוני שדה חובה " , "invalid":"דואר אלקטרוני אינו תקין"}'>
+        </label>
+
+        <h3>עם תשלום זה הנני מאשר קבלת חשבונית בדוא"ל</h3>
+        <div id="submit">
+
+
+
+          <input type="submit" id="send" value="אישור" title="אישור" aria-label="אישור" style="margin-top:-5%">
+        </div>
+        <INPUT TYPE="hidden" value="ttcqht33n" NAME="D">
+        <INPUT TYPE="hidden" value="1" NAME="Send">
+        <INPUT TYPE="hidden" id="SendHesh" value="" NAME="SendHesh">
+        <INPUT TYPE="hidden" id="sendemail" value="True" NAME="sendemail">
+        <INPUT TYPE="hidden" id="Pritim" value="" NAME="Pritim">
+        <INPUT TYPE="hidden" id="ClientLName" value="OTOT ELECTRONICS LTD" NAME="ClientLName">
+        <INPUT TYPE="hidden" id="street" value="10 HAMEFALSIM ST." NAME="street">
+        <INPUT TYPE="hidden" id="city" value="KIRYAT ARIE PO BOX40" NAME="city">
+
+
+        <div class="clearfix"></div>
+      </form>
+      <div id="errors_msg"></div>
+
+    </section>
+  </main>
+</div>
+<div >
+  <a href="https://yaadpay.yaad.net" target="_blank">Powered by <span style="color: #a41d48">Yaad Sarig</span></a>
+</div>
+<!-- lead system iframe -->
+
+<script src="/yaadpay/forms/new/script/jquery-1.12.1.min.js"></script>
+<script src="/yaadpay/forms/new/script/formmanager-0.4.3.min.js"></script>
+<script src="/yaadpay/forms/new/script/script.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-2777056-4', 'auto');
+  ga('set', 'page', '/DHL_MALAM_PAY');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
+
+
+

@@ -1,0 +1,9 @@
+---------
+Because of adding HttpClientModule to sub module and not to root module
+
+Had to add the service that uses this module in providers
+, providers: [MytestserviceService , HeroService]
+
+and add the module to export
+------------
+

@@ -1,0 +1,288 @@
+
+
+<div fxLayout="column" fxLayoutGap="5px" class="top_wrapper" [formGroup]="form"  >
+
+  <div   fxLayout="column"  fxLayoutAlign="space-evenly stretch"  >
+    <div fxLayout="row"     fxLayoutAlign="center stretch" >
+
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly stretch" fxLayoutGap="15px"
+           fxFlex.gt-md="1500px" fxFlex="88" fxFlex.lt-sm="98">
+
+          <div fxLayout="column"   fxFlex="20" fxFlex.lt-sm="25" class="border-wrap" >
+            <div fxLayoutAlign="start start" style="padding: 10px 20px 100px 20px; text-align: center;">   OTOT ELECTRONICS LTD
+              משלוח שמספרו 6028079120 ממוען אליך מחברת:
+              GUNNEBO SECURITY (CHINA) CO.,LTD,
+              נחת בישראל, נמצא בתהליך שחרור ממכס ונושא עלויות בסך 4353.30 ש"ח. לטובת מסירת המשלוח יש להסדיר את התשלום ולמלא את פרטי  </div>
+          </div>
+
+          <div fxLayout="column"   fxFlex="60" fxFlex.lt-md="65" fxLayoutGap="5px" class="border-wrap">
+
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon>credit_card</mat-icon>
+              <div></div>
+              <h4 class="tc-green-600 text-bold">פרטי תשלום</h4>
+            </div>
+<!--Row 1-->
+            <div fxLayout="row" fxLayoutAlign="space-between stretch">
+
+<!--  שם מלא של בעל הכרטיס-->
+<!--              <mat-form-field fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline">-->
+<!--                <mat-label>שם מלא של בעל הכרטיס</mat-label>-->
+<!--                <input matInput>-->
+<!--                <mat-icon matSuffix>person</mat-icon>-->
+<!--              </mat-form-field>-->
+
+<!--  שם מלא של בעל הכרטיס-->
+              <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline" dir="rtl">
+                <mat-label>שם מלא של בעל הכרטיס</mat-label>
+                <mat-hint class="otot-new-error"
+                          *ngIf="form.controls['username'].invalid && (!form.controls['username'].pristine || tried_submitting)">
+                  {{handleError(form.controls['username'], "נא להזין שם בעל כרטיס")}}
+                </mat-hint>
+                <input matInput
+                       formControlName="username"
+                       [(ngModel)]="creditCardPaymentHolder.cardHolderName">
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+
+
+<!--  תעודת זהות-->
+<!--              <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline">-->
+<!--                <mat-label>תעודת זהות-->
+<!--                </mat-label>-->
+<!--                <input matInput-->
+<!--                       appDigitsOnly-->
+<!--                       inputmode="numeric" type="tel"-->
+<!--                       placeholder="תעודת זהות">-->
+<!--                <mat-icon matSuffix>chrome_reader_mode</mat-icon>-->
+<!--              </mat-form-field>-->
+
+              <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline" dir="rtl">
+                <mat-label>תעודת זהות
+                </mat-label>
+                <mat-hint class="otot-new-error"
+                          *ngIf="form.controls['personalId'].invalid && (!form.controls['personalId'].pristine || tried_submitting)">
+                  {{handleError(form.controls['personalId'], "נא להזין תעודת זהות")}}
+                </mat-hint>
+                <input matInput
+                       appDigitsOnly
+                       inputmode="numeric" type="tel"
+                       placeholder="תעודת זהות"
+                       formControlName="personalId"
+                       [(ngModel)]="creditCardPaymentHolder.personalId">
+                <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+              </mat-form-field>
+
+
+            </div>
+<!--Row 2-->
+            <div fxLayout="row" fxLayoutAlign="space-between stretch">
+
+<!--  מספר כרטיס-->
+              <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline" dir="rtl">
+                <mat-label>מספר כרטיס</mat-label>
+                <mat-hint class="otot-new-error"
+                          *ngIf="form.controls['creditCard'].invalid && (!form.controls['creditCard'].pristine || tried_submitting)">
+                  {{handleError(form.controls['creditCard'], "נא להזין מספר אשראי")}}
+                </mat-hint>
+                <input  matInput formControlName="creditCard"
+                        appDigitsOnly
+                        type="tel"
+                        placeholder="מס' כרטיס"
+                        maxlength="19"
+                        autocomplete="cc-number-mobile" ccNumber
+                        id="cc-number-mobile"
+                        appCreditCardDirective
+                        [ngModel]="creditCardPaymentHolder.cardNumber"
+                        (ngModelChange)="setCreditCardNumberEvent($event)">
+                <mat-icon matSuffix>credit_card</mat-icon>
+              </mat-form-field>
+
+<!--  CVV-->
+              <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline" dir="rtl">
+                <mat-label>CVV</mat-label>
+                <mat-hint class=otot-new-error
+                          *ngIf="form.controls['ccv'].invalid && (!form.controls['ccv'].pristine || tried_submitting)">
+                  {{handleError(form.controls['ccv'], "נא הזן קוד")}}
+                </mat-hint>
+                <input matInput appDigitsOnly
+                       inputmode="numeric" type="tel" formControlName="ccv"
+                       [(ngModel)]="creditCardPaymentHolder.cardCCV">
+              </mat-form-field>
+
+            </div>
+<!--Row 3-->
+            <div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex.lt-sm="98" >
+
+<!--  שנה-->
+              <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline" dir="rtl">
+                <mat-label>שנה </mat-label>
+                <mat-hint class=otot-new-error
+                          *ngIf="form.controls['expirationYear'].invalid && (!form.controls['expirationYear'].pristine || tried_submitting)">
+                  {{handleError(form.controls['expirationYear'], "נא הזן שנה")}}
+                </mat-hint>
+                <select matNativeControl
+                        [ngModel]="creditCardPaymentHolder.expirationYear"
+                        (ngModelChange)="creditCardPaymentHolder.expirationYear =$event"
+                        formControlName="expirationYear">
+                  <option value="" selected disabled>שנה</option>
+                  <option *ngFor="let year of next10Years; let i = index"
+                          [value]="year">
+                    {{year}}
+                  </option>
+                </select>
+              </mat-form-field>
+
+<!--  חודש-->
+              <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline" dir="rtl">
+                <mat-label>חודש </mat-label>
+                <mat-hint class=otot-new-error
+                          *ngIf="form.controls['expirationMonth'].invalid && (!form.controls['expirationMonth'].pristine || tried_submitting)">
+                  {{handleError(form.controls['expirationMonth'], "נא הזן חודש")}}
+                </mat-hint>
+                <select matNativeControl
+                        [ngModel]="creditCardPaymentHolder.expirationMonth"
+                        (ngModelChange)="creditCardPaymentHolder.expirationMonth =$event"
+                        formControlName="expirationMonth">
+                  <option value="" selected disabled>חודש</option>
+                  <option *ngFor="let month of months; let i = index"
+                          [value]="i+1">
+                    {{month + '-' + ((i + 1) | number:'2.0')}}
+                  </option>
+                </select>
+
+              </mat-form-field>
+
+            </div>
+
+            <div   fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="space-between stretch" fxLayoutAlign.lt-md="space-around stretch">
+              <div fxLayoutAlign="start start" fxLayoutAlign.lt-lg="center center">
+                <h4 class="tc-green-600 text-bold">עם תשלום זה הנני מאשר קבלת חשבונית בדוא"ל</h4>
+              </div>
+<!--              fxFlex.gt-md  fxLayout.lt-md-->
+              <button class="btn btn-success" click="onAddCreditCardPressed()" >אישור</button>
+            </div>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+lg	'screen and (min-width: 1280px) and (max-width: 1919px)'
+xl	'screen and (min-width: 1920px) and (max-width: 5000px)'
+
+lt-xl	'screen and (max-width: 1919px)'
+lt-lg	'screen and (max-width: 1279px)'
+lt-md	'screen and (max-width: 959px)'
+lt-sm	'screen and (max-width: 599px)'
+
+gt-lg	'screen and (min-width: 1920px)'
+gt-md	'screen and (min-width: 1280px)'
+gt-sm	'screen and (min-width: 960px)'
+gt-xs	'screen and (min-width: 600px)'
+-->
+
+
+<!--
+
+<div fxLayout="column" fxLayoutGap="5px" class="top_wrapper">
+
+  <div   fxLayout="column"  fxLayoutAlign="space-evenly stretch"  >
+    <div fxLayout="row"     fxLayoutAlign="center stretch"        >
+
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly stretch" fxLayoutGap="15px"
+           fxFlex.gt-md="1500px" fxFlex="88" fxFlex.lt-sm="98">
+
+          <div fxLayout="column"   fxFlex="20" fxFlex.lt-sm="25" class="border-wrap" >
+            <div fxLayoutAlign="start start" style="padding: 10px 20px 100px 20px; text-align: center;">   OTOT ELECTRONICS LTD
+              משלוח שמספרו 6028079120 ממוען אליך מחברת:
+              GUNNEBO SECURITY (CHINA) CO.,LTD,
+              נחת בישראל, נמצא בתהליך שחרור ממכס ונושא עלויות בסך 4353.30 ש"ח. לטובת מסירת המשלוח יש להסדיר את התשלום ולמלא את פרטי  </div>
+          </div>
+
+          <div fxLayout="column"   fxFlex="60" fxFlex.lt-md="65" fxLayoutGap="5px" class="border-wrap">
+
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon>credit_card</mat-icon>
+              <div></div>
+              <h4 class="tc-green-600 text-bold">פרטי תשלום</h4>
+            </div>
+
+<div fxLayout="row" fxLayoutAlign="space-between stretch">
+
+  <mat-form-field fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline">
+    <mat-label>שם מלא של בעל הכרטיס</mat-label>
+    <input matInput>
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline">
+    <mat-label>תעודת זהות
+    </mat-label>
+    <input matInput
+           appDigitsOnly
+           inputmode="numeric" type="tel"
+           placeholder="תעודת זהות">
+    <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+  </mat-form-field>
+
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between stretch">
+
+  <mat-form-field fxLayout="column"  fxFlex=48 fxLayoutAlign="start stretch" appearance="outline">
+    <mat-label>שם מלא של בעל הכרטיס</mat-label>
+    <input matInput>
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline">
+    <mat-label>תעודת זהות
+    </mat-label>
+    <input matInput
+           appDigitsOnly
+           inputmode="numeric" type="tel"
+           placeholder="תעודת זהות">
+    <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+  </mat-form-field>
+
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlex.lt-sm="98" >
+
+  <mat-form-field fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline">
+    <mat-label>שם מלא של בעל הכרטיס</mat-label>
+    <input matInput>
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field  fxLayout="column" fxFlex=48 fxLayoutAlign="start stretch" appearance="outline">
+    <mat-label>תעודת זהות
+    </mat-label>
+    <input matInput
+           appDigitsOnly
+           inputmode="numeric" type="tel"
+           placeholder="תעודת זהות">
+    <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+  </mat-form-field>
+
+</div>
+
+<div   fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="space-between stretch" fxLayoutAlign.lt-md="space-around stretch">
+  <div fxLayoutAlign="start start" fxLayoutAlign.lt-lg="center center">
+    <h4 class="tc-green-600 text-bold">עם תשלום זה הנני מאשר קבלת חשבונית בדוא"ל</h4>
+  </div>
+  <button class="btn btn-success" >אישור</button>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+-->

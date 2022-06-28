@@ -1,0 +1,26 @@
+
+
+<nav class="navbar navbar-dark bg-success text-dark">
+  <div class="container">
+
+    <a *ngFor="let route of arrRoutes, let i=index"
+       #id1
+       class="navbar-brand"
+       [ngClass]="{'chosen':id1.innerText === choice , 'text-white': id1.innerText !== choice}"
+       (click)="onClick(id1)"
+    >   {{route.name}}
+    </a>
+<!--
+    <a class ="navbar-brand" [ngClass]="{'chosen':id1.innerText === choice , 'text-white':id1.innerText !== choice}" #id1 (click)="choice = id1.innerText" routerLink="./bind">       bind </a>
+    <a class ="navbar-brand" [ngClass]="{'chosen':id2.innerText === choice , 'text-white':id2.innerText !== choice}" #id2 (click)="choice = id2.innerText" routerLink="./sound">       sound </a>
+    <a class ="navbar-brand" [ngClass]="{'chosen':id3.innerText === choice , 'text-white':id3.innerText !== choice}" #id3 (click)="choice = id3.innerText" routerLink="./canvas">       canvas </a>
+    <a class ="navbar-brand" [ngClass]="{'chosen':id4.innerText === choice , 'text-white':id4.innerText !== choice}" #id4 (click)="choice = id4.innerText" routerLink="./map">       map </a>
+    <a class ="navbar-brand" [ngClass]="{'chosen':id5.innerText === choice , 'text-white':id5.innerText !== choice}" #id5 (click)="choice = id5.innerText" routerLink="./webcam">    webcam </a>
+
+    -->
+  </div>
+</nav>
+
+<div class="router-outlet-class">
+  <router-outlet></router-outlet>
+</div>

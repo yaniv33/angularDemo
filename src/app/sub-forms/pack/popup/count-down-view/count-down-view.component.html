@@ -1,0 +1,19 @@
+<div>
+<button mat-raised-button class="btn btn-primary btn-w"
+        (click)="openCountdown()">count down</button>
+
+
+  <app-count-down fxShow.gt-sm fxHide            fxLayout="column" fxLayoutAlign="center center"
+                              class="countdown-class countdown-float countdown-sticky"
+                  *ngIf="timeLeftForBookingVal>0"
+                  [timeLeft]="timeLeftForBookingVal">
+  </app-count-down>
+
+
+  <app-count-down fxShow fxHide.gt-sm class="countdown-class "
+                                   *ngIf="timeLeftForBookingVal>0"
+                                   [timeLeft]="timeLeftForBookingVal">
+  </app-count-down>
+
+
+</div>

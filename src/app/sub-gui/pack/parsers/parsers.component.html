@@ -1,0 +1,39 @@
+<div style="margin: 5px">
+
+  <button class="btn btn-primary" style="margin: 2px" (click)="changeLocal('he')">heb</button>
+  <button class="btn btn-primary" style="margin: 2px" (click)="changeLocal('en')">english</button>
+  <button class="btn btn-primary" style="margin: 2px" (click)="changeLocal('nb')">norway</button>
+
+</div>
+
+<div style="direction: ltr; margin: 20px;">
+
+  Days from 1/1/2017:<span class="tab"></span>  {{ daysFrom2017}}                         <br />
+  Humanized Diff:<span class="tab"></span> {{ humanized }}                                <br />
+  Diff In Weeks:<span class="tab"></span> {{ weeks }} weeks                               <br />
+  Current Time:<span class="tab"></span> {{ currentTime }}                                <br />
+  Humanized Now Diff:<span class="tab"></span> {{ humanizedNow }}                         <br />
+
+  LL:<span class="tab"></span>    {{getParse('LL')}}           <br />
+  ll:<span class="tab"></span>    {{getParse('ll')}}           <br />
+  LLL:<span class="tab"></span>   {{getParse('LLL')}}          <br />
+  lll:<span class="tab"></span>   {{getParse('lll')}}          <br />
+  LLLL:<span class="tab"></span>  {{getParse('LLLL')}}         <br />
+
+  Custom moment pipe::<span class="tab"></span>  {{getParse('llll')}}         <br />
+
+  getMonthOnly:<span class="tab"></span>  {{getMonthOnly()}}                  <br />
+<!--  Start editing to see some magic happen sf:<span class="tab"></span> {{todayInString | json}} <br />-->
+<!--{{test()}}<br>-->
+  Custom pipe LLLL:<span class="tab"></span>          {{'2017' | momentPipe:'LLLL'}}         <br /> <!-- not effected by class local -->
+  Custom pipe english LLLL:<span class="tab"></span>  {{'2017' | momentPipe:'LLLL' : 'en'}} <br />
+  Custom pipe: {{3 | myPipe:10:2}}
+  Currency pipe:  {{590 / 100 | currency:'ILS'}}
+
+</div>
+
+
+&nbsp;
+&thinsp;
+&ensp;
+&emsp;

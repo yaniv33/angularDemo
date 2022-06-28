@@ -1,0 +1,37 @@
+<div style="margin: 5px">
+
+  <button class="btn btn-primary" style="margin: 2px"
+          *ngFor="let dummy of ' '.repeat(6).split(''), let i = index"
+          (click)="doRoute(i)"
+          (mouseenter) ="mouseEnter(i) "
+          (mouseleave) ="mouseLeave()">Choice {{i}}</button>
+
+</div>
+
+<div style="margin: 5px">
+  <button class="btn btn-warning" style="margin: 2px"
+          *ngFor="let dummy of ' '.repeat(3).split(''), let i = index"
+          (click)="buttonClick(i+1)"
+          (mouseenter) ="mouseEnter(i + 11) "
+          (mouseleave) ="mouseLeave()">fragment {{i+1}}</button>
+
+</div>
+
+<div style="margin: 5px">
+  <a [routerLink]='"../route-pos"' [fragment]="'part1'">fragment 1</a>
+  <a [routerLink]='"../route-pos"' [fragment]="'part2'">fragment 2</a>
+  <a [routerLink]='"../route-pos"' [fragment]="'part3'">fragment 3</a>
+</div>
+
+<a [routerLink]='"."' [fragment]="link">{{link}}</a>
+<a routerLink='"."'   fragment="link"  queryParamsHandling="merge"> Merge </a>
+<a routerLink='"."'   fragment="link"  queryParamsHandling="preserve"> Preserve </a>
+
+<br>
+<div>URL   : <b>{{routeUrl}}</b> </div>
+<div>Param : <b>{{routeParam}}</b> </div>
+<div>Fragment : <b>{{routeFragment}}</b> </div>
+
+
+<p style="margin: 20px">{{Desc}}</p>
+

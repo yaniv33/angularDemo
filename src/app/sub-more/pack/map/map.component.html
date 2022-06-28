@@ -1,0 +1,43 @@
+<h1>Angular Google Maps (AGM) Demo</h1>
+<button class="btn btn-primary" (click)="doMove()"> move </button>
+<button class="btn btn-primary" (click)="goTelAviv()"> tel aviv </button>
+<button class="btn btn-primary" (click)="goMyLocation()"> my location </button>
+
+<agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [usePanning]="true"
+  (mapClick)="mapClicked($event)">
+
+
+  <agm-marker
+    *ngFor="let m of markers; let i = index"
+    (markerClick)="clickedMarker(m.label, i)"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [label]="m.label!"
+    [markerDraggable]="m.draggable"
+    (dragEnd)="markerDragEnd(m, $event)">
+
+    <agm-info-window>
+      <strong>HELLO</strong>
+    </agm-info-window>
+
+  </agm-marker>
+
+  <agm-circle
+    [latitude]="lat + 0.3"
+    [longitude]="lng"
+    [radius]="50000"
+    [fillColor]="'red'"
+    [circleDraggable]="true"
+    [editable]="true"
+  >
+  </agm-circle>
+
+</agm-map>
+
+
+<H3>open issue : <a href="https://github.com/angular/components/issues/24742">here</a></H3>

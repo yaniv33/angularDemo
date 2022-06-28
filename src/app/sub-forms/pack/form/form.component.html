@@ -1,0 +1,143 @@
+<form [formGroup]="myForm">
+  <hr>
+
+  <div fxLayout="row"
+       fxLayout.xs="column"
+       fxLayoutGap="0.5%"
+       fxLayoutAlign="space-evenly center" >
+    <div fxFlex="30%" class="card-effect">
+      <mat-form-field appearance="outline">
+        <input matInput
+               placeholder="email"
+               formControlName="email">
+      </mat-form-field>
+      <mat-hint align="end">Must fill</mat-hint>
+
+      <mat-error *ngIf="email?.invalid || email?.touched">
+        Your email does not
+      </mat-error>
+    </div>
+
+    <div fxFlex="30%" class="card-effect">
+      <mat-form-field>
+        <input matInput placeholder="age" formControlName="age">
+      </mat-form-field>
+      <mat-hint align="end">Must fill</mat-hint>
+
+      <mat-error *ngIf="age?.invalid || age?.touched">
+        Your age does not
+      </mat-error>
+    </div>
+
+    <div fxFlex="30%" class="card-effect">
+      <mat-form-field>
+        <input matInput placeholder="password" formControlName="password">
+      </mat-form-field>
+      <mat-hint align="end">Must fill</mat-hint>
+
+      <mat-error *ngIf="password?.invalid || password?.touched">
+        Your password does not
+      </mat-error>
+    </div>
+
+  </div>
+
+  <!--ff-->
+
+  <div fxLayout="row"
+       fxLayout.xs="column"
+       fxLayoutGap="0.5%"
+       fxLayoutAlign="space-evenly center" >
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker"  formControlName="serializedDate" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" placeholder="Choose a month"
+                      [min]="minDate"
+                      [max]="maxDate"
+                      [matDatepickerFilter]="myFilter"
+                      (dateInput)="addDateEvent('input', $event)"
+                      (dateChange)="addDateEvent('change', $event)"
+      >
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1 startView="year" [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
+
+    <div>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="date touch UI">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker2></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button (click)="picker2.open()">date touch UI Open</button>
+      <button mat-raised-button (click)="hebrew()">switch to Hebrew</button>
+    </div>
+  </div>
+
+  <h4>Home Phone</h4>
+
+  <div formGroupName="homePhone">
+
+    <mat-form-field>
+      <input matInput placeholder="area" formControlName="area">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="prefix" formControlName="prefix">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="line" formControlName="line">
+    </mat-form-field>
+
+  </div>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>       More phones ?   </mat-panel-title>
+        <mat-panel-description> add more phones </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <button mat-raised-button color="primary" (click)="addPhone()">Add more phones</button>
+      <div formArrayName="phones">
+        <div *ngFor="let phone of phoneForms.controls; let i=index"[formGroupName]="i">
+          <mat-form-field>
+            <input matInput placeholder="area" formControlName="area">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="prefix" formControlName="prefix">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="line" formControlName="line">
+          </mat-form-field>
+          <button mat-raised-button color="warn" (click)="deletePhone(i)">Delete</button>
+        </div>
+      </div>
+
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-checkbox formControlName="agree">Check me!</mat-checkbox>
+
+  <mat-error *ngIf="agree?.invalid || agree?.touched">
+    Must agree
+  </mat-error>
+
+  <button mat-raised-button [disabled]="myForm.invalid"
+          [hidden]="success"
+          (ngSubmit)="submitHandler()">submit</button>
+  <hr>
+  Value  :{{myForm.value | json }}
+</form>
+

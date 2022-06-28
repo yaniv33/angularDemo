@@ -1,0 +1,21 @@
+
+.countdown-class {
+
+  color: gray;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.04);
+  border-radius: 0px 0px 10px 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.countdown-bold {
+  color: #0093A5;
+}
+
+.countdown-float {
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  margin: 0px 10px;
+}
+

@@ -1,0 +1,41 @@
+<div fxLayout="column" fxLayoutGap="5px">
+
+  <div   fxLayout="column"  fxLayoutAlign="space-evenly stretch"  style="background: purple; height: 100px">
+    <div fxLayout="row"     fxLayoutAlign="center stretch"        style="background: lightgrey;">
+        <div fxLayout="column" fxFlex="80" fxLayoutGap="20px"     style="background: red;">
+
+            <div fxLayoutAlign="start start" style="background: #607d8b;">   פרטי המשתתפים </div>
+            <div fxLayoutAlign="start start" style="background: #7dc855;">פרטי המשתתפים </div>
+
+        </div>
+    </div>
+  </div>
+
+  <h6>fxHide </h6>
+  <div fxLayout="column" fxLayoutGap="1px">
+    <div fxLayout="row" fxLayoutAlign="center stretch" style="background:yellow" fxHide fxShow.xs >fxHide fxShow.xs</div>
+    <div fxLayout="row" fxLayoutAlign="center stretch" style="background:green"  fxShow fxHide.xs >fxShow fxHide.xs</div>
+    <div fxLayout="row" fxLayoutAlign="center stretch" style="background:blue"   fxShow fxHide.md >fxShow fxHide.md </div>
+    <div fxLayout="row" fxLayoutAlign="center stretch" style="background:red"    fxShow.md fxHide>fxShow.md fxHide</div>
+    <div fxLayout="row" fxLayoutAlign="center stretch" style="background:purple"   fxShow fxHide.lg >fxShow fxHide.lg </div>
+    <div fxLayout="row" fxLayoutAlign="center stretch" style="background:grey"    fxShow.lg fxHide>fxShow.lg fxHide</div>
+
+  </div>
+
+
+  <h6>row wrap </h6>
+  <div fxLayout="row wrap" fxLayoutGap="20px" style="background: lightgrey;">
+    <div *ngFor="let dummy of ' '.repeat(10).split(''), let i = index"
+         fxFlex="30" style="background: #607d8b;"  >hello {{i}}</div>
+  </div>
+
+<!--  <h6>CSS cascade </h6>-->
+<!--  <div fxLayout="row">-->
+<!--    <div fxLayout="column" class="inner" fxFlex="50">class=inner</div>-->
+<!--    <div fxLayout="row" class="outer" fxFlex="50" fxLayoutAlign="space-evenly">-->
+<!--      <div fxLayout="column" class="inner"  fxFlex="50" >class=inner</div>-->
+<!--      class=outer-->
+<!--    </div>-->
+<!--  </div>-->
+
+</div>

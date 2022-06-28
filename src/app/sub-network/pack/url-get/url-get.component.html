@@ -1,0 +1,24 @@
+<p style="color: red">Basic route and ngFor usage - can drop !!! </p>
+<p >
+  url-get works! , name is {{name}}
+</p>
+
+<h1>{{ninjas.length}}</h1>
+
+{{ninjas[0].belt1}}
+{{ninjas[1].belt1}}
+
+
+<ul>
+  <li  *ngFor="let ninja of ninjas" >
+    {{ ninja.name }}
+  </li>
+</ul>
+
+<br>
+
+<ul>
+  <li *ngFor="let user of users" >
+    <span class="badge">{{user.name}}</span> {{user.age}}
+  </li>
+</ul>

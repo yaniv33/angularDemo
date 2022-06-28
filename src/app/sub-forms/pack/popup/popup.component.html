@@ -1,0 +1,14 @@
+<mat-stepper  orientation="horizontal" [linear]="true" #stepper>
+
+  <mat-step label="Snack-bar" [completed]="completed">
+    <app-snack-bar></app-snack-bar>
+  </mat-step>
+
+  <mat-step label="Count down" [completed]="completed">
+    <app-count-down-view></app-count-down-view>
+  </mat-step>
+  <mat-step label="Dialog" [completed]="completed">
+    <app-dialog></app-dialog>
+  </mat-step>
+
+</mat-stepper>

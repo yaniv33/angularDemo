@@ -1,0 +1,22 @@
+{
+  "/springDemo/rest/*": {
+    "changeOrigin": true,
+    "logLevel": "info",
+    "target": {
+      "host": "localhost",
+      "protocol": "http:",
+      "port": 8086
+    },
+    "secure": false
+  },
+  "/springDemo/*": {
+    "ws": true,
+    "logLevel": "info",
+    "target": {
+      "host": "localhost",
+      "protocol": "ws:",
+      "port": 8086
+    },
+    "secure": false
+  }
+}

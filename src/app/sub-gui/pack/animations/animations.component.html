@@ -1,0 +1,94 @@
+<div fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+  <div fxLayout="column" fxLayoutAlign="start center">
+
+    <button (click)="toggle()">Toggle PopOver</button>
+
+    <div [@popOverState]="stateName">
+      <p><img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier" alt="random pic" width="50px"></p>
+      <p>Hello! I'm a helpful message.</p>
+    </div>
+
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+    <div fxLayout="row">
+      <button (click)="changePosition('move')"    class="button">Move</button>
+      <button (click)="changePosition('spin')"    class="button">Spin</button>
+      <button (click)="changePosition('enlarge')" class="button">Enlarge</button>
+      <button (click)="changePosition(null)"      class="button">Reset</button>
+    </div>
+
+    <img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier"
+         alt="random pic"
+         [@photoState]="position"
+         class="photo">
+</div>
+
+<!--use keyframes-->
+  <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+    <div fxLayout="row">
+      <button (click)="changeWithKeyFrame('move')"    class="button">Move</button>
+      <button (click)="changeWithKeyFrame(null)"      class="button">Reset</button>
+    </div>
+
+    <img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier"
+         alt="random pic"
+         [@photoStateMove]="positionWithKey"
+         (@photoStateMove.start)="logAnimation($event)"
+         (@photoStateMove.done)="logAnimation($event)"
+         class="photo">
+
+
+  </div>
+<!--using query-->
+  <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+    <div fxLayout="row">
+      <button (click)="setPhotos(false)"     class="button">Reset</button>
+      <button (click)="setPhotos(true)"      class="button">Set</button>
+    </div>
+
+    <div [@photosAnimation]="photos.length">
+      <div *ngFor="let photo of photos">
+        <img  [src]="photo" width="100px" style="margin: 10px">
+      </div>
+    </div>
+
+  </div>
+
+  <!--using query-->
+  <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+      <h3>Enter pic to tilt</h3>
+
+    <img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier"
+         alt="random pic"
+         (mouseover)="positionTilt = 'move'"
+         (mouseout) ="positionTilt = 'stay'"
+         [@photoTilt]="positionTilt"
+         class="photo">
+  </div>
+
+</div>
+
+
+
+
+
+
+<!--<img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier"-->
+<!--     alt="random pic"-->
+<!--     [@photoState]="position"-->
+<!--     class="photo">-->
+
+<!--<button (click)="changePosition('move')"    class="button">Translate</button>-->
+<!--<button (click)="changePosition('spin')"    class="button">Rotate</button>-->
+<!--<button (click)="changePosition('enlarge')" class="button">Scale</button>-->
+<!--<button (click)="changePosition(null)"    class="button">Reset</button>-->
+
+<!--<div [@popOverState]="stateName">-->
+<!--  <p><img src="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier" alt="random pic" width="50px"></p>-->
+<!--  <p>Hello! I'm a helpful message.</p>-->
+<!--</div>-->

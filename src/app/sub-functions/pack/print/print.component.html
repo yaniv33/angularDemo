@@ -1,0 +1,18 @@
+<div class="container" id="component1" [hidden]=true>
+  <H1 style="color:red">HELLO , my name is yaniv</H1>
+
+  <H6>where is home</H6>
+
+</div>
+
+<div class="container" id="component2" [hidden]=true>
+  //Here I have all the HTML source 2
+
+</div>
+
+<button (click)="printComponent('component1')">Print1</button>
+<button (click)="printComponent('component2')">Print2</button>
+<button (click)="onCheckoutPressed()">PrintDirect</button>
+
+
+<app-print-inner [hidden]="true" #printTickets></app-print-inner>
